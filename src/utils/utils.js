@@ -167,22 +167,6 @@ export const getContrastColor = (luminance, light, dark) => {
 //     return paletteInfo;
 // };
 
-// get color combinations
-export const getCombinationsAA = (palette) => {
-    const combinations = [];
-
-    palette.forEach((color) => {
-        palette.forEach((color2) => {
-            return (
-                color !== color2 &&
-                chroma.contrast(color.bgColor, color2.bgColor) >= 4.5 &&
-                combinations.push([color, color2])
-            );
-        });
-    });
-    return combinations;
-};
-
 export const getCombinations = (palette) => {
     const combinations = [];
 
@@ -199,6 +183,24 @@ export const getCombinations = (palette) => {
                     color.bgColor,
                     color2.bgColor,
                     contrastRatio,
+                ])
+            );
+        });
+    });
+    return combinations;
+};
+
+export const getAllCombinations = (palette) => {
+    const combinations = [];
+
+    palette.forEach((color) => {
+        palette.forEach((color2) => {
+            return (
+                color !== color2 &&
+                combinations.push([
+                    color.bgColor,
+                    color2.bgColor,
+                    color.textColor,
                 ])
             );
         });

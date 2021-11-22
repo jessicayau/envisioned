@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const TemplateContainer = styled.div`
+    position: relative;
     width: 90%;
     background-color: #${(props) => (props.bgColor ? props.bgColor : "ffffff")};
     margin: 0 5vw;
@@ -8,60 +9,61 @@ export const TemplateContainer = styled.div`
     transition: background-color 1s;
 `;
 
-export const TemplateHeader = styled.header`
-    height: 4rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 5%;
-`;
+// export const TemplateHeader = styled.header`
+//     height: 4rem;
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     padding: 0 5%;
+// `;
 
-export const TemplateLogo = styled.span`
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #${(props) => (props.fgColor ? props.fgColor : "000000")};
-`;
+// export const TemplateLogo = styled.span`
+//     font-size: 1.2rem;
+//     font-weight: bold;
+//     color: #${(props) => (props.fgColor ? props.fgColor : "000000")};
+// `;
 
-export const TemplateLinks = styled.div`
-    color: #${(props) => (props.fgColor ? props.fgColor : "000000")};
-    display: flex;
+// export const TemplateLinks = styled.div`
+//     color: #${(props) => (props.fgColor ? props.fgColor : "000000")};
+//     display: flex;
 
-    .menuIcon {
-        display: none;
+//     .menuIcon {
+//         display: none;
 
-        @media screen and (max-width: 550px) {
-            display: block;
-        }
-    }
-`;
+//         @media screen and (max-width: 550px) {
+//             display: block;
+//         }
+//     }
+// `;
 
-export const TemplateLink = styled.span`
-    padding: 0 0.5rem;
+// export const TemplateLink = styled.span`
+//     padding: 0 0.5rem;
 
-    &:first-child {
-        position: relative;
+//     &:first-child {
+//         position: relative;
 
-        &::after {
-            content: "";
-            width: 95%;
-            height: 2px;
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            background-color: #${(props) => props.bgColor};
-        }
-    }
+//         &::after {
+//             content: "";
+//             width: 95%;
+//             height: 2px;
+//             position: absolute;
+//             bottom: -5px;
+//             left: 0;
+//             background-color: #${(props) => props.bgColor};
+//         }
+//     }
 
-    @media screen and (max-width: 550px) {
-        display: none;
-    }
-`;
+//     @media screen and (max-width: 550px) {
+//         display: none;
+//     }
+// `;
 
 export const TemplateHero = styled.div`
     width: 100%;
-    padding: 5%;
+    padding: 6rem 5% 5%;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    align-items: center;
 
     h1 {
         font-size: 5vw;

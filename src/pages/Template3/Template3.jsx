@@ -33,7 +33,12 @@ const Template3 = () => {
                 className="backgroundGradient"
             > */}
             <Slider
-                slideLinks={["gradientOne", "gradientTwo", "gradientThree"]}
+                slideLinks={[
+                    "gradientOne",
+                    "gradientTwo",
+                    "gradientThree",
+                    "gradientFour",
+                ]}
             >
                 <Slide
                     className="slide"
@@ -75,6 +80,18 @@ const Template3 = () => {
 
                         <CustomButton>Login</CustomButton>
                     </Form>
+                </Slide>
+                <Slide className="slide" id="gradientFour">
+                    <div
+                        style={{
+                            display: "flex",
+                            height: "100%",
+                            width: "100%",
+                        }}
+                    >
+                        <div className="left">hello</div>
+                        <div className="right">goodbye</div>
+                    </div>
                 </Slide>
             </Slider>
             {/* </Content> */}

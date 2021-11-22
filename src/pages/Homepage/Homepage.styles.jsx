@@ -7,6 +7,10 @@ export const SectionContent = styled.div`
     justify-content: center;
     background-color: ${(props) =>
         props.bgColor ? props.bgColor : "transparent"};
+
+    h3 {
+        margin-bottom: 2rem;
+    }
 `;
 
 export const ContrastSectionText = styled.p`

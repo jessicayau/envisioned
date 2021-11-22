@@ -12,6 +12,8 @@ export const HeroSection = styled.div`
     position: relative;
     height: 85vh;
     padding: 8rem 5% 5rem;
+    background-color: ${(props) =>
+        props.bgColor ? props.bgColor : "transparent"};
     background-image: url("/images/interior.png");
     background-position: center;
     background-size: cover;
@@ -19,6 +21,7 @@ export const HeroSection = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: all 1s ease;
 
     p {
         width: 65%;
@@ -67,6 +70,7 @@ export const Stats = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 1rem;
     align-items: center;
+    transition: all 1s ease;
 
     .stats-group {
         display: flex;
@@ -99,6 +103,8 @@ export const Stats = styled.div`
 export const ImageSection = styled.div`
     padding: 10rem 5% 5rem;
     background-color: #${(props) => (props.bgColor ? props.bgColor : "ffffff")};
+    color: #${(props) => (props.fgColor ? props.fgColor : "000000")};
+    transition: all 1s ease;
 
     h2 {
         font-size: 2rem;

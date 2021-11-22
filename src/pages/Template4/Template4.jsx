@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { BsHouseFill } from "react-icons/bs";
 import CustomButton from "../../components/CustomButton/CustomButton";
@@ -11,27 +11,56 @@ import {
     TemplateContainer,
     Title,
 } from "./Template4.styles";
-import { selectCurrentPalette } from "../../redux/palette/paletteSlice";
+import {
+    selectCurrentPalette,
+    selectVersion,
+} from "../../redux/palette/paletteSlice";
+import { RgbaColorPicker } from "react-colorful";
 
 const Template4 = () => {
     const palette = useSelector(selectCurrentPalette);
-    const [c1, c2, c3, c4, c5] = palette.colors;
+    // const [c1, c2, c3, c4, c5] = palette.colors;
+    const version = useSelector(selectVersion);
+
+    const [c1, setC1] = useState(palette.colors[0]);
+    const [c2, setC2] = useState(palette.colors[1]);
+    const [c3, setC3] = useState(palette.colors[2]);
+    const [c4, setC4] = useState(palette.colors[3]);
+    const [c5, setC5] = useState(palette.colors[4]);
+
+    useEffect(() => {
+        if (version === "light") {
+            setC1(palette.colors[0]);
+            setC2(palette.colors[1]);
+            setC3(palette.colors[2]);
+            setC4(palette.colors[3]);
+            setC5(palette.colors[4]);
+        } else {
+            setC1(palette.colors[4]);
+            setC2(palette.colors[3]);
+            setC3(palette.colors[2]);
+            setC4(palette.colors[1]);
+            setC5(palette.colors[0]);
+        }
+    }, [version, palette]);
 
     return (
-        <TemplateContainer fgColor={c5.bgColor}>
+        <TemplateContainer
+            fgColor={version === "light" ? c1.textColor : c1.bgColor}
+        >
             <TemplateHeader
                 brand="Renovate"
                 links={["Projects", "Services"]}
                 button
                 buttonBg={c2.bgColor}
                 buttonFg={c2.textColor}
-                textColor={c5.bgColor}
-                activeBg={c4.bgColor}
+                textColor={version === "light" ? c1.textColor : c1.bgColor}
+                activeBg={version === "light" ? c4.bgColor : c2.bgColor}
                 square
             >
-                <BsHouseFill style={{ color: `#${c2.bgColor}` }} />
+                <BsHouseFill />
             </TemplateHeader>
-            <HeroSection>
+            <HeroSection bgColor={version === "dark" && "rgba(0,0,0,.2)"}>
                 <Title titleColor={c3.bgColor}>Headline</Title>
                 <p>
                     Cherry bomb morning smoothie bowl red lentil curry soup
@@ -62,7 +91,11 @@ const Template4 = () => {
                     <span>awards</span>
                 </div>
             </Stats>
-            <ImageSection bgColor={c1.bgColor} titleColor={c4.bgColor}>
+            <ImageSection
+                bgColor={c1.bgColor}
+                fgColor={c1.textColor}
+                titleColor={c4.bgColor}
+            >
                 <h2>Projects</h2>
                 <Images>
                     <div>

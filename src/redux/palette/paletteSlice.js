@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { menuData } from "../../assets/data";
-import { getPaletteInfo } from "../../utils/utils";
+import { getPaletteInfo, switchVersion } from "../../utils/utils";
 
 const initialPalette = getPaletteInfo(
     menuData[5].palettes[2].id,
@@ -15,6 +15,7 @@ const initialState = {
         category: "Custom",
         palettes: [],
     },
+    version: "light",
 };
 
 export const paletteSlice = createSlice({
@@ -29,7 +30,6 @@ export const paletteSlice = createSlice({
                 action.payload.paletteID,
                 action.payload.palette
             );
-            console.log(state.currentPalette);
         },
         addCustomPalette: (state, action) => {
             state.customPalettes.palettes.push(action.payload);
@@ -41,6 +41,9 @@ export const paletteSlice = createSlice({
                 );
             state.currentPalette = initialPalette;
         },
+        changeVersion: (state, action) => {
+            state.version = action.payload;
+        },
     },
 });
 
@@ -48,9 +51,14 @@ export const paletteSlice = createSlice({
 export const selectAllPalettes = (state) => state.palette.allPalettes;
 export const selectCurrentPalette = (state) => state.palette.currentPalette;
 export const selectCustomPalettes = (state) => state.palette.customPalettes;
+export const selectVersion = (state) => state.palette.version;
 
 // actions
-export const { getPalette, addCustomPalette, removeCustomPalette } =
-    paletteSlice.actions;
+export const {
+    getPalette,
+    addCustomPalette,
+    removeCustomPalette,
+    changeVersion,
+} = paletteSlice.actions;
 
 export default paletteSlice.reducer;

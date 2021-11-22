@@ -52,6 +52,19 @@ export const Slide = styled.div`
         }
     }
 
+    .left {
+        width: 75%;
+        height: 100%;
+        background-color: black;
+        color: white;
+    }
+
+    .right {
+        width: 25%;
+        height: 100%;
+        background-color: pink;
+    }
+
     h1 {
         margin-bottom: 1rem;
 

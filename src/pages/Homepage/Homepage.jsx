@@ -74,6 +74,10 @@ const Homepage = () => {
                     half
                 >
                     <SectionContent>
+                        <h3>
+                            It's your job to make sure that the content you
+                            create is accessible to everyone.
+                        </h3>
                         <p>
                             There are many tools available to check if color
                             combinations are color blind safe or if they have
@@ -109,8 +113,8 @@ const Homepage = () => {
                             return (
                                 <ListItem
                                     key={index}
-                                    bgColor={c3.bgColor}
-                                    fgColor={c3.textColor}
+                                    bgColor={c2.bgColor}
+                                    fgColor={c2.textColor}
                                 >
                                     <IoColorPalette
                                         style={{
@@ -140,10 +144,10 @@ const Homepage = () => {
                             The color palettes are curated based on my own
                             personal preference of using five colors - at least
                             one of which is light and at least one of which is
-                            dark. All color palettes and text/background color
-                            combinations have been checked with a contrast
-                            checker and vision impairment accessibility checker
-                            to ensure that they are visible to everyone.
+                            dark. It is hard to create a template that works
+                            with all color palette types without making small
+                            tweaks here and there, so please keep in mind that
+                            some text/background combinations may not be ideal.
                             Aesthetics and accessibility are both important
                             concepts of design. I hope you find some inspiration
                             here!

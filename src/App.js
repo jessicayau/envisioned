@@ -48,7 +48,7 @@ const App = () => {
                         toggleSidebar={handleToggleSidebar}
                     >
                         {sidebarIsOpen ? (
-                            <BsFillCaretLeftFill />
+                            <BsFillCaretLeftFill style={{ color: "black" }} />
                         ) : (
                             <BsFillCaretRightFill />
                         )}
