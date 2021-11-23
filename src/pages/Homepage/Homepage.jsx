@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { IoColorPalette, IoStar } from "react-icons/io5";
 import { FaHeart } from "react-icons/fa";
+import { ReactComponent as HeroImg } from "../../assets/images/rabbit-working.svg";
 import Card from "../../components/Card/Card";
 import Footer from "../../components/Footer/Footer";
 import Hero from "../../components/Hero/Hero";
@@ -18,12 +19,25 @@ const Homepage = () => {
     return (
         <div className="home">
             <main>
-                <Hero btnBg={c2.bgColor} btnFg={c2.textColor} />
+                <Hero
+                    btnBg={c2.bgColor}
+                    btnFg={c2.textColor}
+                    btnText="Random Palette"
+                    title="Inspirational Color Palettes Visualized"
+                    titleFg={c3.bgColor}
+                    textFg={c5.bgColor}
+                    text="Choosing a color scheme is hard. Figuring out how to apply
+                    it to your design is even harder. Browse through the color
+                    palettes to find one that sparks joy and see how it could
+                    look when applied."
+                >
+                    <HeroImg />
+                </Hero>
                 <Section
                     cards
                     title="ABC's to Keep in Mind"
-                    bgColor={c3.bgColor}
-                    fgColor={c3.textColor}
+                    bgColor={c1.bgColor}
+                    fgColor={c1.textColor}
                 >
                     {cardData.map((data, index) => (
                         <Card
@@ -31,9 +45,9 @@ const Homepage = () => {
                             title={data.title}
                             // content={data.content}
                             btn="Learn More"
-                            btnBg={c1.bgColor}
-                            btnFg={c1.textColor}
-                            fgColor={c5.bgColor}
+                            btnBg={c4.bgColor}
+                            btnFg={c4.textColor}
+                            // fgColor={c5.bgColor}
                         >
                             {data.content}
                         </Card>
@@ -137,7 +151,6 @@ const Homepage = () => {
                         >
                             A Message From The Creator
                         </h2>
-                        {/* <h3>Custom Curated Color Palettes</h3> */}
                     </SectionContent>
                     <SectionContent>
                         <p>

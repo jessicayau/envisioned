@@ -15,6 +15,10 @@ export const CategoryTitle = styled.h3`
     &:hover {
         background-color: rgba(200, 200, 241, 0.2);
     }
+
+    @media screen and (max-width: 767px) {
+        font-size: 1rem;
+    }
 `;
 
 export const Submenu = styled.div`
@@ -35,6 +39,10 @@ export const Submenu = styled.div`
         max-height: 300px;
         overflow: auto;
         transition: max-height 250ms ease-in-out;
+
+        @media screen and (max-width: 767px) {
+            max-height: 210px;
+        }
     }
 
     .paletteWrapper {

@@ -5,19 +5,17 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
         margin: 0;
         padding: 0;
-        /* margin-block-start: 0;
-        margin-block-end: 0;
-        margin-inline-start: 0;
-        margin-inline-end: 0; */
         font-family: "Lato", sans-serif;
-        /* transition: background 2s;
-        transition: background-color 2s;
-        transition: color 1s; */
     }
 
     a {
         text-decoration: none;
+        color: black;
     }
+
+    /* a:focus {
+        outline: 1px dashed grey;
+    } */
 
     ul {
         padding: 0;
@@ -33,6 +31,10 @@ const GlobalStyle = createGlobalStyle`
         border: none;
         cursor: pointer;
     }
+
+    /* button:focus {
+        outline: 2px dashed grey;
+    } */
 
 
 `;

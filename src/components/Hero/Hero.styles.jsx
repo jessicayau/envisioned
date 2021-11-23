@@ -2,43 +2,39 @@ import styled from "styled-components";
 
 export const HeroContainer = styled.section`
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: 1fr 1fr;
     align-items: center;
-    padding: 4rem 5vw 5rem;
-    background-color: white;
+    padding: 6rem 5vw 5%;
 
     svg {
         width: 100%;
         height: auto;
     }
 
-    @media screen and (max-width: 740px) {
+    @media screen and (max-width: 767px) {
         grid-template-columns: 1fr;
         padding: 2rem 5vw 5rem;
-    }
-`;
 
-export const HeroContent = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    @media screen and (max-width: 740px) {
-        order: 1;
+        svg {
+            order: -1;
+            width: 80%;
+            margin: 2rem auto 0;
+        }
     }
 `;
 
 export const Title = styled.h1`
     font-size: 5vw;
-    margin-bottom: 1rem;
-    /* -webkit-text-stroke: 1px black; */
+    color: #${(props) => (props.fgColor ? props.fgColor : "000000")};
 
-    @media screen and (max-width: 740px) {
-        font-size: 38px;
+    @media screen and (max-width: 767px) {
+        font-size: clamp(2.5rem, 8vw, 4rem);
     }
 `;
 
 export const Text = styled.p`
-    line-height: 2rem;
+    color: #${(props) => (props.fgColor ? props.fgColor : "000000")};
+    line-height: 1.6rem;
     font-size: 1.1rem;
+    padding: 1rem 0;
 `;

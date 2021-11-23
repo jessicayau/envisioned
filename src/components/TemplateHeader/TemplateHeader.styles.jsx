@@ -8,7 +8,7 @@ export const TemplateHeaderContainer = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 5%;
+    padding: 0 5vw;
     color: #${(props) => (props.textColor ? props.textColor : "000000")};
     z-index: 1;
 

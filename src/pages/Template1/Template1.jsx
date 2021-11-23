@@ -2,27 +2,21 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { MdVolunteerActivism } from "react-icons/md";
 import { IoMdPaw } from "react-icons/io";
-import { IoHeart, IoMenu } from "react-icons/io5";
+import { IoHeart } from "react-icons/io5";
 import {
     selectCurrentPalette,
     selectVersion,
 } from "../../redux/palette/paletteSlice";
 import { ReactComponent as PetSvg } from "../../assets/images/dog-and-cat.svg";
 import TemplateHeader from "../../components/TemplateHeader/TemplateHeader";
-import {
-    TemplateContainer,
-    TemplateHero,
-    TemplateLink,
-    TemplateLinks,
-    TemplateLogo,
-} from "./Template1.styles";
-import CustomButton from "../../components/CustomButton/CustomButton";
+import { TemplateContainer } from "./Template1.styles";
 import Card from "../../components/Card/Card";
 import Section from "../../components/Section/Section";
+import Hero from "../../components/Hero/Hero";
 
 const Template1 = () => {
     const palette = useSelector(selectCurrentPalette);
-    const version = useSelector(selectVersion);
+    const currentVersion = useSelector(selectVersion);
 
     const [c1, setC1] = useState(palette.colors[0]);
     const [c2, setC2] = useState(palette.colors[1]);
@@ -32,7 +26,7 @@ const Template1 = () => {
 
     // const [c1, c2, c3, c4, c5] = palette.colors;
     useEffect(() => {
-        if (version === "light") {
+        if (currentVersion === "light") {
             setC1(palette.colors[0]);
             setC2(palette.colors[1]);
             setC3(palette.colors[2]);
@@ -45,7 +39,7 @@ const Template1 = () => {
             setC4(palette.colors[1]);
             setC5(palette.colors[0]);
         }
-    }, [version, palette]);
+    }, [currentVersion, palette]);
 
     return (
         <TemplateContainer bgColor={c1.bgColor}>
@@ -55,24 +49,17 @@ const Template1 = () => {
                 textColor={c4.bgColor}
                 activeBg={c3.bgColor}
             ></TemplateHeader>
-            <TemplateHero>
-                <div className="hero-content">
-                    <h1 style={{ color: `#${c3.bgColor}` }}>
-                        Save a Life,
-                        <br />
-                        Adopt Today
-                    </h1>
-                    <p style={{ color: `#${c1.textColor}` }}>
-                        Butternut mix fresh mangos double dark chocolate
-                        Sicilian pistachio pesto strawberries mocha chocolate
-                        pinch of yum lentils winter peach strawberry mango
-                    </p>
-                    <CustomButton fgColor={c4.textColor} bgColor={c4.bgColor}>
-                        Find a Pet
-                    </CustomButton>
-                </div>
+            <Hero
+                btnBg={c4.bgColor}
+                btnFg={c4.textColor}
+                btnText="Find a Pet"
+                titleFg={c3.bgColor}
+                title="Clever Headline"
+                textFg={c1.textColor}
+                text="This is just an example of how the color palette could look when applied. There are dark and light versions! Click on the sun/moon at the bottom."
+            >
                 <PetSvg />
-            </TemplateHero>
+            </Hero>
             <Section cards title="How You Can Help" fgColor={c1.textColor}>
                 <Card
                     title="Adopt"

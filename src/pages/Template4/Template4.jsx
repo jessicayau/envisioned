@@ -15,7 +15,6 @@ import {
     selectCurrentPalette,
     selectVersion,
 } from "../../redux/palette/paletteSlice";
-import { RgbaColorPicker } from "react-colorful";
 
 const Template4 = () => {
     const palette = useSelector(selectCurrentPalette);
@@ -52,8 +51,8 @@ const Template4 = () => {
                 brand="Renovate"
                 links={["Projects", "Services"]}
                 button
-                buttonBg={c2.bgColor}
-                buttonFg={c2.textColor}
+                btnBg={c2.bgColor}
+                btnFg={c2.textColor}
                 textColor={version === "light" ? c1.textColor : c1.bgColor}
                 activeBg={version === "light" ? c4.bgColor : c2.bgColor}
                 square
@@ -62,18 +61,20 @@ const Template4 = () => {
             </TemplateHeader>
             <HeroSection bgColor={version === "dark" && "rgba(0,0,0,.2)"}>
                 <Title titleColor={c3.bgColor}>Headline</Title>
-                <p>
+                {/* <p>
                     Cherry bomb morning smoothie bowl red lentil curry soup
                     mushroom risotto red curry tofu noodles cherry bomb pepper
                     kale scotch bonnet pepper avocado basil pesto sweet potato
                     black bean burrito banana bread hummus falafel bowl
                     summertime salted.
+                </p> */}
+                <p>
+                    This is just an example of how the color palette could look
+                    when applied. I hope you find inspiration from it! Also,
+                    check out the light/dark versions by clicking on the
+                    sun/moon at the bottom. Have fun!
                 </p>
-                <CustomButton
-                    square
-                    bgColor={c2.bgColor}
-                    fgColor={c2.textColor}
-                >
+                <CustomButton square btnBg={c2.bgColor} btnFg={c2.textColor}>
                     View Projects
                 </CustomButton>
             </HeroSection>

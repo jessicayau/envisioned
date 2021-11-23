@@ -9,7 +9,7 @@ import {
 } from "./TemplateHeader.styles";
 
 const TemplateHeader = ({ brand, links, children, button, ...otherProps }) => {
-    const { buttonBg, buttonFg, textColor, activeBg } = otherProps;
+    const { btnBg, btnFg, textColor, activeBg } = otherProps;
 
     return (
         <TemplateHeaderContainer textColor={textColor}>
@@ -23,7 +23,7 @@ const TemplateHeader = ({ brand, links, children, button, ...otherProps }) => {
                     <TemplateLink key={index}>{link}</TemplateLink>
                 ))}
                 {button && (
-                    <CustomButton square bgColor={buttonBg} fgColor={buttonFg}>
+                    <CustomButton square btnBg={btnBg} btnFg={btnFg}>
                         Contact Us
                     </CustomButton>
                 )}

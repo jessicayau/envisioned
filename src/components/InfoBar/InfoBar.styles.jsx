@@ -9,7 +9,8 @@ export const InfoBarContainer = styled.div`
     color: white;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    justify-content: right;
     align-items: center;
     gap: 1rem;
     padding: 0 5vw;
@@ -20,25 +21,34 @@ export const InfoBarContainer = styled.div`
         width: 1.8rem;
         color: white;
         cursor: pointer;
+
+        @media screen and (max-width: 425px) {
+            height: 1.5rem;
+            width: 1.5rem;
+        }
     }
 `;
 
 export const Icons = styled.div`
-    width: 75%;
+    /* width: 75%; */
     display: flex;
     gap: 1rem;
 `;
 
 export const CopiedMessage = styled.div`
     position: absolute;
+    width: 200px;
     left: 50%;
     transform: translate(-50%, 0);
-    padding: 0.5rem 2rem;
+    /* padding: 0.5rem 2rem; */
+    padding: 0.5rem 0;
+    text-align: center;
     border-radius: 5px;
     font-size: 1rem;
     font-weight: bold;
     color: black;
     background-color: white;
+    border: 1px solid grey;
     animation: shiftUp 250ms linear forwards;
     z-index: 5;
 
@@ -48,7 +58,7 @@ export const CopiedMessage = styled.div`
         }
         to {
             opacity: 1;
-            transform: translate(-50%, -3rem);
+            transform: translate(-50%, -3.5rem);
         }
     }
 `;

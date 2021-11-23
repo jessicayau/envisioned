@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const TemplateContainer = styled.div`
-    width: 90%;
     color: #${(props) => (props.fgColor ? props.fgColor : "000000")};
     margin: 0 5vw;
     border: 1px solid lightgrey;
@@ -11,7 +10,7 @@ export const TemplateContainer = styled.div`
 export const HeroSection = styled.div`
     position: relative;
     height: 85vh;
-    padding: 8rem 5% 5rem;
+    padding: 8rem 5vw 5rem;
     background-color: ${(props) =>
         props.bgColor ? props.bgColor : "transparent"};
     background-image: url("/images/interior.png");
@@ -24,7 +23,7 @@ export const HeroSection = styled.div`
     transition: all 1s ease;
 
     p {
-        width: 65%;
+        width: 70%;
         line-height: 1.5rem;
         text-align: center;
         font-size: 1.1rem;
@@ -34,13 +33,14 @@ export const HeroSection = styled.div`
         margin-top: 2rem;
     }
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 767px) {
+        padding: 6rem 5vw 5rem;
         background-position: 20%;
-        /* padding: 6rem 5%; */
         background-position: 25%;
 
         p {
             width: 95%;
+            font-size: 1rem;
         }
 
         h1 {
@@ -57,13 +57,13 @@ export const Title = styled.h1`
 
 export const Stats = styled.div`
     height: 7rem;
-    width: 90%;
+    width: calc(100% - 10vw);
     background-color: #${(props) => (props.bgColor ? props.bgColor : "ffffff")};
     color: #${(props) => (props.fgColor ? props.fgColor : "000000")};
     box-shadow: 0 5px 8px rgba(0, 0, 0, 0.5);
     border-radius: 5px;
     position: absolute;
-    left: 5%;
+    left: 5vw;
     transform: translateY(-3.5rem);
     padding: 0 5%;
     display: grid;
@@ -92,7 +92,7 @@ export const Stats = styled.div`
         padding: 0 1rem;
     }
 
-    @media screen and (max-width: 660px) {
+    @media screen and (max-width: 670px) {
         height: 18rem;
         padding: 1.5rem 0;
         grid-template-columns: 1fr;
@@ -101,7 +101,7 @@ export const Stats = styled.div`
 `;
 
 export const ImageSection = styled.div`
-    padding: 10rem 5% 5rem;
+    padding: 10rem 5vw 5rem;
     background-color: #${(props) => (props.bgColor ? props.bgColor : "ffffff")};
     color: #${(props) => (props.fgColor ? props.fgColor : "000000")};
     transition: all 1s ease;
@@ -124,11 +124,11 @@ export const ImageSection = styled.div`
     }
 
     @media screen and (max-width: 767px) {
-        padding: 10rem 5% 5rem;
+        padding: 10rem 5vw 5rem;
     }
 
-    @media screen and (max-width: 660px) {
-        padding: 20rem 5% 5rem;
+    @media screen and (max-width: 670px) {
+        padding: 20rem 5vw 5rem;
     }
 `;
 

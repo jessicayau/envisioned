@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { GrAdd, GrRotateRight } from "react-icons/gr";
+import { GrRotateRight } from "react-icons/gr";
+import { IoAddOutline } from "react-icons/io5";
 import { TiDeleteOutline } from "react-icons/ti";
 import ColorPalette from "../../components/ColorPalette/ColorPalette";
 import ColorSwatch from "../../components/ColorSwatch/ColorSwatch";
@@ -111,15 +112,14 @@ const CreatePalette = () => {
                 <p>
                     Create your own palettes to apply onto the templates! Click
                     on the swatches to choose your own colors or generate
-                    completely random colors with just a click of a button.
+                    completely random colors with just a click of a button. Try
+                    to choose at least one light and one dark color.
                 </p>
                 <p>
-                    Generated color palettes all have at least one light color
-                    and one dark color. Colors are randomly generated so some
+                    Generated color palettes are completely random so some
                     palettes may not look very appealing, but you can tweak them
                     by adjusting the individual swatches. Also keep in mind that
-                    randomly generated color palettes have not been checked for
-                    colorblind accessibility.
+                    they have not been checked for colorblind accessibility.
                 </p>
             </TextContent>
             <PaletteSwatches>
@@ -145,6 +145,8 @@ const CreatePalette = () => {
                 <CustomButton
                     type="button"
                     name="generate palette"
+                    btnBg={c5.bgColor}
+                    btnFg={c5.textColor}
                     onClick={handleRandomColor}
                 >
                     <GrRotateRight />
@@ -153,12 +155,15 @@ const CreatePalette = () => {
                 <CustomButton
                     type="button"
                     name="add palette"
+                    btnBg={c2.bgColor}
+                    btnFg={c2.textColor}
                     onClick={handleCreatePalette}
                 >
-                    <GrAdd />
+                    <IoAddOutline />
                     palette
                 </CustomButton>
             </Buttons>
+            <h2>Custom Palettes</h2>
             <CustomPalettesContainer>
                 {customPalettes.palettes.map((palette) => (
                     <PaletteWrapper key={palette.id}>

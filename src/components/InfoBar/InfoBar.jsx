@@ -11,7 +11,7 @@ import {
 import ColorPalette from "../ColorPalette/ColorPalette";
 import { CopiedMessage, Icons, InfoBarContainer } from "./InfoBar.styles";
 import { useDispatch } from "react-redux";
-import { switchVersion } from "../../utils/utils";
+import { useLocation } from "react-router";
 
 const InfoBar = () => {
     const paletteInfo = useSelector(selectCurrentPalette);
@@ -19,6 +19,7 @@ const InfoBar = () => {
     const currentVersion = useSelector(selectVersion);
     const [copied, setCopied] = useState(false);
     const dispatch = useDispatch();
+    const location = useLocation();
 
     const handleCopyColor = (color) => {
         navigator.clipboard.writeText(color);
@@ -55,15 +56,17 @@ const InfoBar = () => {
                 </div>
                 <Icons>
                     <BiCopy onClick={handleCopyPalette} />
-                    {currentVersion === "light" ? (
-                        <MdOutlineLightMode
-                            onClick={() => handleVersion("dark")}
-                        />
-                    ) : (
-                        <MdOutlineDarkMode
-                            onClick={() => handleVersion("light")}
-                        />
-                    )}
+                    {(location.pathname === "/templates/1" ||
+                        location.pathname === "/templates/4") &&
+                        (currentVersion === "light" ? (
+                            <MdOutlineDarkMode
+                                onClick={() => handleVersion("dark")}
+                            />
+                        ) : (
+                            <MdOutlineLightMode
+                                onClick={() => handleVersion("light")}
+                            />
+                        ))}
                 </Icons>
             </InfoBarContainer>
         </>

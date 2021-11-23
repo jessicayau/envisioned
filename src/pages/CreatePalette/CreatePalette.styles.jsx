@@ -6,49 +6,69 @@ export const CreatePaletteContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    h1,
+    h2 {
+        align-self: flex-start;
+    }
 `;
 
 export const TextContent = styled.div`
-    width: 50%;
-    padding: 1rem 0 2rem;
+    /* width: 50%; */
+
+    padding: 2rem 0 4rem;
+    display: flex;
+    gap: 2rem;
 
     p {
+        width: 50%;
         padding-top: 1rem;
         line-height: 1.5rem;
     }
 
-    @media screen and (max-width: 650px) {
-        width: 80%;
+    @media screen and (max-width: 767px) {
+        /* width: 80; */
+        flex-direction: column;
+        gap: 1rem;
+
+        p {
+            width: 100%;
+        }
     }
 `;
 
 export const PaletteSwatches = styled.div`
-    border: 1px solid grey;
-    width: 50%;
-    border-radius: 10px;
-    margin-bottom: 1rem;
+    width: 80%;
+    height: 8rem;
     position: relative;
+    display: flex;
+    border: 1px solid grey;
+    margin-bottom: 1rem;
 
-    .swatch:first-child {
-        span {
-            border-radius: 10px 10px 0 0;
-        }
-    }
-
-    .swatch:last-child {
-        span {
-            border-radius: 0 0 9px 9px;
-        }
-    }
-
-    @media screen and (max-width: 650px) {
+    @media screen and (max-width: 767px) {
         width: 80%;
+        height: 100%;
+        flex-direction: column;
+        border-radius: 10px;
+
+        .swatch:first-child {
+            span {
+                border-radius: 10px 10px 0 0;
+            }
+        }
+
+        .swatch:last-child {
+            span {
+                border-radius: 0 0 9px 9px;
+            }
+        }
     }
 `;
 
 export const Buttons = styled.div`
     display: flex;
     gap: 1rem;
+    margin-bottom: 5rem;
 
     button {
         display: flex;
@@ -68,7 +88,7 @@ export const Buttons = styled.div`
 
 export const CustomPalettesContainer = styled.div`
     width: 100%;
-    margin-top: 3rem;
+    margin-top: 2em;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     justify-items: center;
@@ -94,24 +114,3 @@ export const RemoveButton = styled.button`
         }
     }
 `;
-// export const ColorSwatch = styled.div
-
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     background-color: ${(props) => props.bgColor};
-
-//     input {
-//         width: 100%;
-//         height: 7rem;
-//         border: none;
-//         background: none;
-//     }
-
-//     label {
-//         text-transform: uppercase;
-//         @media screen and (max-width: 425px) {
-//             display: none;
-//         }
-//     }
-// `;

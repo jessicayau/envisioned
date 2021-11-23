@@ -34,7 +34,6 @@ const ColorSwatch = ({ color, handleColorChange }) => {
                     <HexColorInput color={color} onChange={handleColorChange} />
                 </ColorPicker>
             )}
-            {/* </Swatch> */}
         </ColorSwatchContainer>
     );
 };

@@ -1,42 +1,57 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import {
     HeaderContainer,
+    Line,
     Logo,
     Navbar,
-    NavbarContainer,
     NavItem,
+    NavToggleBtn,
 } from "./Header.styles";
 
 const Header = () => {
+    const [menuIsOpen, setMenuIsOpen] = useState(false);
+
+    const handleMenu = () => {
+        if (menuIsOpen) {
+            setMenuIsOpen(!menuIsOpen);
+        } else return;
+    };
+
     return (
         <HeaderContainer>
             <Logo href="/">Envisioned</Logo>
-            <NavbarContainer>
-                <Navbar>
-                    <NavItem>
-                        <NavLink to="/">H</NavLink>
-                    </NavItem>
-                    <NavItem>
-                        <NavLink to="/create">C</NavLink>
-                    </NavItem>
-                    <NavItem>
-                        <NavLink to="/templates/1">T1</NavLink>
-                    </NavItem>
-                    <NavItem>
-                        <NavLink to="/templates/4">T4</NavLink>
-                    </NavItem>
-                    <NavItem>
-                        <NavLink to="/templates/3">T3</NavLink>
-                    </NavItem>
-                    <NavItem>
-                        <NavLink to="/text">T</NavLink>
-                    </NavItem>
-                    <NavItem>
-                        <NavLink to="/gradients">G</NavLink>
-                    </NavItem>
-                </Navbar>
-            </NavbarContainer>
+            <Navbar menuIsOpen={menuIsOpen}>
+                <NavItem onClick={handleMenu}>
+                    <NavLink exact to="/">
+                        Home
+                    </NavLink>
+                </NavItem>
+                <NavItem onClick={handleMenu}>
+                    <NavLink to="/create">Create</NavLink>
+                </NavItem>
+                <NavItem onClick={handleMenu}>
+                    <NavLink to="/templates/1">Template1</NavLink>
+                </NavItem>
+                <NavItem onClick={handleMenu}>
+                    <NavLink to="/templates/4">Template4</NavLink>
+                </NavItem>
+                <NavItem onClick={handleMenu}>
+                    <NavLink to="/templates/3">Template3</NavLink>
+                </NavItem>
+                <NavItem onClick={handleMenu}>
+                    <NavLink to="/text">Text</NavLink>
+                </NavItem>
+                <NavItem onClick={handleMenu}>
+                    <NavLink to="/gradients">Gradients</NavLink>
+                </NavItem>
+            </Navbar>
+            <NavToggleBtn
+                role="button"
+                onClick={() => setMenuIsOpen((prev) => !prev)}
+            >
+                <Line menuIsOpen={menuIsOpen}></Line>
+            </NavToggleBtn>
         </HeaderContainer>
     );
 };

@@ -1,30 +1,33 @@
 import React from "react";
-import { HeroContainer, HeroContent, Text, Title } from "./Hero.styles";
-import { ReactComponent as HeroImg } from "../../assets/images/rabbit-working.svg";
+import { HeroContainer, Text, Title } from "./Hero.styles";
 import CustomButton from "../CustomButton/CustomButton";
 
-const Hero = ({ btnBg, btnFg }) => {
+const Hero = ({
+    btnBg,
+    btnFg,
+    btnText,
+    title,
+    titleFg,
+    text,
+    textFg,
+    children,
+}) => {
     const handleButtonClick = () => {};
 
     return (
         <HeroContainer>
-            <HeroContent>
-                <Title>Inspirational Color Palettes Visualized</Title>
-                <Text>
-                    Choosing a color scheme is hard. Figuring out how to apply
-                    it to your design is even harder. Browse through the color
-                    palettes to find one that sparks joy and see how it could
-                    look when applied.
-                </Text>
+            <div>
+                <Title fgColor={titleFg}>{title}</Title>
+                <Text fgColor={textFg}>{text}</Text>
                 <CustomButton
-                    bgColor={btnBg}
-                    fgColor={btnFg}
+                    btnBg={btnBg}
+                    btnFg={btnFg}
                     onClick={handleButtonClick}
                 >
-                    Generate Random Palette
+                    {btnText}
                 </CustomButton>
-            </HeroContent>
-            <HeroImg />
+            </div>
+            {children}
         </HeroContainer>
     );
 };

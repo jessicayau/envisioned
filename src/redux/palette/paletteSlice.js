@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { menuData } from "../../assets/data";
-import { getPaletteInfo, switchVersion } from "../../utils/utils";
+import { getPaletteInfo } from "../../utils/utils";
 
 const initialPalette = getPaletteInfo(
     menuData[5].palettes[2].id,

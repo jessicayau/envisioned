@@ -8,7 +8,6 @@ import { GradientsPageContainer } from "./GradientsPage.styles";
 
 const GradientsPage = () => {
     const currentPalette = useSelector(selectCurrentPalette);
-    const [c1, c2, c3, c4, c5] = currentPalette.colors;
     const allCombinations = getAllCombinations(currentPalette.colors);
 
     return (

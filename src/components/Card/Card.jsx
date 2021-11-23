@@ -20,11 +20,7 @@ const Card = ({
             {children && <CardContent {...otherProps}>{children}</CardContent>}
             {btn && (
                 <a href={`#${title}`}>
-                    <CustomButton
-                        bgColor={btnBg}
-                        fgColor={btnFg}
-                        {...otherProps}
-                    >
+                    <CustomButton btnBg={btnBg} btnFg={btnFg} {...otherProps}>
                         {btn}
                     </CustomButton>
                 </a>

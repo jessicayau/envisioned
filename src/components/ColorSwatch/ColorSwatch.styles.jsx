@@ -7,7 +7,8 @@ export const ColorSwatchContainer = styled.div`
 export const Swatch = styled.span`
     display: block;
     width: 100%;
-    height: 80px;
+    min-height: 80px;
+    height: 100%;
     background-color: ${(props) => props.color};
     transform: ${(props) => (props.isOpen ? "scale(1)" : "scale(1)")};
     z-index: ${(props) => (props.isOpen ? 5 : 1)};
@@ -15,18 +16,13 @@ export const Swatch = styled.span`
     /* box-shadow: -10px 0px 2px
         ${(props) => (props.isOpen ? "blue" : "transparent")}; */
     /* position: relative; */
-
-    /* &:hover {
-        transform: scale(1.1);
-        z-index: 5;
-    } */
 `;
 
 export const ColorPicker = styled.div`
     position: absolute;
-    top: 50%;
+    /* top: 50%;
     right: -50%;
-    transform: translateY(-50%);
+    transform: translateY(-50%); */
     z-index: 10;
 
     .react-colorful__saturation {

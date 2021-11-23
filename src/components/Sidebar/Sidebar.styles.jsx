@@ -9,7 +9,7 @@ export const SidebarContainer = styled.div`
     border-right: 1px solid rgba(200, 200, 241, 0.5);
     background-color: white;
     transition: all 250ms ease-in-out;
-    z-index: 10;
+    z-index: 15;
 `;
 
 export const Categories = styled.div`
