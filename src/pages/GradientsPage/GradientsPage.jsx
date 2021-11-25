@@ -14,8 +14,9 @@ const GradientsPage = () => {
         <GradientsPageContainer>
             <h1>Gradients</h1>
             <ColorCardsLayout>
-                {allCombinations.map((set) => (
+                {allCombinations.map((set, index) => (
                     <ColorCard
+                        key={index}
                         gradient={`linear-gradient(#${set[0]}, #${set[1]})`}
                         textColor={set[2]}
                     />

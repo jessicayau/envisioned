@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { BsHouseFill } from "react-icons/bs";
 import CustomButton from "../../components/CustomButton/CustomButton";
 import TemplateHeader from "../../components/TemplateHeader/TemplateHeader";
@@ -12,6 +12,7 @@ import {
     Title,
 } from "./Template4.styles";
 import {
+    getRandomPalette,
     selectCurrentPalette,
     selectVersion,
 } from "../../redux/palette/paletteSlice";
@@ -20,6 +21,7 @@ const Template4 = () => {
     const palette = useSelector(selectCurrentPalette);
     // const [c1, c2, c3, c4, c5] = palette.colors;
     const version = useSelector(selectVersion);
+    const dispatch = useDispatch();
 
     const [c1, setC1] = useState(palette.colors[0]);
     const [c2, setC2] = useState(palette.colors[1]);
@@ -42,6 +44,10 @@ const Template4 = () => {
             setC5(palette.colors[0]);
         }
     }, [version, palette]);
+
+    const handleRandomPalette = () => {
+        dispatch(getRandomPalette());
+    };
 
     return (
         <TemplateContainer
@@ -74,8 +80,13 @@ const Template4 = () => {
                     check out the light/dark versions by clicking on the
                     sun/moon at the bottom. Have fun!
                 </p>
-                <CustomButton square btnBg={c2.bgColor} btnFg={c2.textColor}>
-                    View Projects
+                <CustomButton
+                    square
+                    btnBg={c2.bgColor}
+                    btnFg={c2.textColor}
+                    onClick={handleRandomPalette}
+                >
+                    Random Palette
                 </CustomButton>
             </HeroSection>
             <Stats bgColor={c3.bgColor} fgColor={c3.textColor}>

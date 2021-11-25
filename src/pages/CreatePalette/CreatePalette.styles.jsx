@@ -114,3 +114,14 @@ export const RemoveButton = styled.button`
         }
     }
 `;
+
+export const ClearAllButton = styled.button`
+    font-size: 1.1rem;
+    margin-top: 2rem;
+    align-self: flex-start;
+    background: none;
+
+    &:hover {
+        font-weight: 700;
+    }
+`;

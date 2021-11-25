@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import {
-    selectAllPalettes,
+    selectAllPalettesData,
     selectCustomPalettes,
 } from "../../redux/palette/paletteSlice";
 import MenuItem from "../MenuItem/MenuItem";
@@ -9,7 +9,7 @@ import { SidebarContainer, Categories } from "./Sidebar.styles";
 
 const Sidebar = ({ sidebarIsOpen }) => {
     const [selected, setSelected] = useState("");
-    const palettesData = useSelector(selectAllPalettes);
+    const palettesData = useSelector(selectAllPalettesData);
     const customPalettesData = useSelector(selectCustomPalettes);
 
     const handleSubmenu = (item) => {

@@ -4,6 +4,7 @@ import { MdVolunteerActivism } from "react-icons/md";
 import { IoMdPaw } from "react-icons/io";
 import { IoHeart } from "react-icons/io5";
 import {
+    getRandomPalette,
     selectCurrentPalette,
     selectVersion,
 } from "../../redux/palette/paletteSlice";
@@ -13,10 +14,12 @@ import { TemplateContainer } from "./Template1.styles";
 import Card from "../../components/Card/Card";
 import Section from "../../components/Section/Section";
 import Hero from "../../components/Hero/Hero";
+import { useDispatch } from "react-redux";
 
 const Template1 = () => {
     const palette = useSelector(selectCurrentPalette);
     const currentVersion = useSelector(selectVersion);
+    const dispatch = useDispatch();
 
     const [c1, setC1] = useState(palette.colors[0]);
     const [c2, setC2] = useState(palette.colors[1]);
@@ -41,6 +44,10 @@ const Template1 = () => {
         }
     }, [currentVersion, palette]);
 
+    const handleRandomPalette = () => {
+        dispatch(getRandomPalette());
+    };
+
     return (
         <TemplateContainer bgColor={c1.bgColor}>
             <TemplateHeader
@@ -52,7 +59,8 @@ const Template1 = () => {
             <Hero
                 btnBg={c4.bgColor}
                 btnFg={c4.textColor}
-                btnText="Find a Pet"
+                btnText="Random Palette"
+                handleButtonClick={handleRandomPalette}
                 titleFg={c3.bgColor}
                 title="Clever Headline"
                 textFg={c1.textColor}

@@ -11,9 +11,8 @@ const Hero = ({
     text,
     textFg,
     children,
+    handleButtonClick,
 }) => {
-    const handleButtonClick = () => {};
-
     return (
         <HeroContainer>
             <div>

@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { IoColorPalette, IoStar } from "react-icons/io5";
 import { FaHeart } from "react-icons/fa";
 import { ReactComponent as HeroImg } from "../../assets/images/rabbit-working.svg";
@@ -10,11 +10,19 @@ import ListItem from "../../components/ListItem/ListItem";
 import { cardData, colorData } from "../../assets/data";
 import { SectionContent, List, ContrastSectionText } from "./Homepage.styles";
 import Section from "../../components/Section/Section";
-import { selectCurrentPalette } from "../../redux/palette/paletteSlice";
+import {
+    getRandomPalette,
+    selectCurrentPalette,
+} from "../../redux/palette/paletteSlice";
 
 const Homepage = () => {
     const palette = useSelector(selectCurrentPalette);
     const [c1, c2, c3, c4, c5] = palette.colors;
+    const dispatch = useDispatch();
+
+    const handleRandomPalette = () => {
+        dispatch(getRandomPalette());
+    };
 
     return (
         <div className="home">
@@ -23,6 +31,7 @@ const Homepage = () => {
                     btnBg={c2.bgColor}
                     btnFg={c2.textColor}
                     btnText="Random Palette"
+                    handleButtonClick={handleRandomPalette}
                     title="Inspirational Color Palettes Visualized"
                     titleFg={c3.bgColor}
                     textFg={c5.bgColor}

@@ -3,8 +3,8 @@ import { menuData } from "../../assets/data";
 import { getPaletteInfo } from "../../utils/utils";
 
 const initialPalette = getPaletteInfo(
-    menuData[5].palettes[2].id,
-    menuData[5].palettes[2].colors
+    menuData[1].palettes[3].id,
+    menuData[1].palettes[3].colors
 );
 
 const initialState = {
@@ -31,6 +31,18 @@ export const paletteSlice = createSlice({
                 action.payload.palette
             );
         },
+        getRandomPalette: (state) => {
+            const palettesArr = state.allPalettes.flatMap(
+                (category) => category.palettes
+            );
+            const randomPalette =
+                palettesArr[Math.floor(Math.random() * palettesArr.length)];
+            state.currentPalette = getPaletteInfo(
+                randomPalette.id,
+                randomPalette.colors
+            );
+        },
+
         addCustomPalette: (state, action) => {
             state.customPalettes.palettes.push(action.payload);
         },
@@ -41,6 +53,9 @@ export const paletteSlice = createSlice({
                 );
             state.currentPalette = initialPalette;
         },
+        clearAllCustomPalettes: (state, action) => {
+            state.customPalettes.palettes = [];
+        },
         changeVersion: (state, action) => {
             state.version = action.payload;
         },
@@ -48,7 +63,7 @@ export const paletteSlice = createSlice({
 });
 
 // selectors
-export const selectAllPalettes = (state) => state.palette.allPalettes;
+export const selectAllPalettesData = (state) => state.palette.allPalettes;
 export const selectCurrentPalette = (state) => state.palette.currentPalette;
 export const selectCustomPalettes = (state) => state.palette.customPalettes;
 export const selectVersion = (state) => state.palette.version;
@@ -56,8 +71,10 @@ export const selectVersion = (state) => state.palette.version;
 // actions
 export const {
     getPalette,
+    getRandomPalette,
     addCustomPalette,
     removeCustomPalette,
+    clearAllCustomPalettes,
     changeVersion,
 } = paletteSlice.actions;
 

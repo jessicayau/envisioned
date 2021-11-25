@@ -8,6 +8,7 @@ import ColorSwatch from "../../components/ColorSwatch/ColorSwatch";
 import CustomButton from "../../components/CustomButton/CustomButton";
 import {
     addCustomPalette,
+    clearAllCustomPalettes,
     getPalette,
     removeCustomPalette,
     selectCurrentPalette,
@@ -16,6 +17,7 @@ import {
 import { generateRandomPalette, sortCustomColors } from "../../utils/utils";
 import {
     Buttons,
+    ClearAllButton,
     CreatePaletteContainer,
     CustomPalettesContainer,
     PaletteSwatches,
@@ -28,7 +30,6 @@ const CreatePalette = () => {
     const customPalettes = useSelector(selectCustomPalettes);
     const currentPalette = useSelector(selectCurrentPalette);
     const dispatch = useDispatch();
-    // const numCustomPalettes = customPalettes.palettes.length;
     const [c1, c2, c3, c4, c5] = currentPalette.colors;
 
     const [color1, setColor1] = useState("#" + c1.bgColor);
@@ -37,16 +38,7 @@ const CreatePalette = () => {
     const [color4, setColor4] = useState("#" + c4.bgColor);
     const [color5, setColor5] = useState("#" + c5.bgColor);
 
-    console.log(color1, color2, color3, color4, color5);
-
-    // const [colors, setColors] = useState({
-    //     color1: "#" + c1.bgColor,
-    //     color2: "#" + c2.bgColor,
-    //     color3: "#" + c3.bgColor,
-    //     color4: "#" + c4.bgColor,
-    //     color5: "#" + c5.bgColor,
-    // });
-
+    // sets swatch colors to current palette colors whenever palette changes
     useEffect(() => {
         setColor1("#" + c1.bgColor);
         setColor2("#" + c2.bgColor);
@@ -55,17 +47,17 @@ const CreatePalette = () => {
         setColor5("#" + c5.bgColor);
     }, [c1, c2, c3, c4, c5]);
 
+    // handles addition of new palette
     const handleCreatePalette = () => {
         const newColors = [
-            color1.slice(1),
-            color2.slice(1),
-            color3.slice(1),
-            color4.slice(1),
-            color5.slice(1),
+            color1.slice(1).toUpperCase(),
+            color2.slice(1).toUpperCase(),
+            color3.slice(1).toUpperCase(),
+            color4.slice(1).toUpperCase(),
+            color5.slice(1).toUpperCase(),
         ];
-        // console.log(newColors);
 
-        const newID = 60 + customPalettes.palettes.length;
+        const newID = Date.now();
         const newPalette = {
             id: newID,
             colors: sortCustomColors(newColors),
@@ -76,6 +68,7 @@ const CreatePalette = () => {
         );
     };
 
+    // handles generation of new random palette colors
     const handleRandomColor = () => {
         const [first, second, third, fourth, fifth] = generateRandomPalette();
         setColor1(first);
@@ -83,26 +76,11 @@ const CreatePalette = () => {
         setColor3(third);
         setColor4(fourth);
         setColor5(fifth);
-        // const firstColor = "#FFFFFF";
-        // const lastColor = chroma.random().darken(3.5).hex();
-        // const randomColor1 = chroma.random().hex();
-        // const randomColor2 = chroma.random().hex();
-
-        // const scale2 = chroma
-        //     .scale([firstColor, randomColor1, randomColor2, lastColor])
-        //     .mode("lch")
-        //     .colors(25);
-        // setScale2(scale2);
-        // setColor1(chroma(scale2[1]).hex());
-        // setColor2(chroma(scale2[3]).hex());
-        // setColor3(chroma(scale2[12]).hex());
-        // setColor4(chroma(scale2[20]).hex());
-        // setColor5(chroma(scale2[24]).hex());
     };
 
+    // handles removal of custom palette
     const handleRemovePalette = (id) => {
         dispatch(removeCustomPalette(id));
-        console.log(id);
     };
 
     return (
@@ -129,18 +107,6 @@ const CreatePalette = () => {
                 <ColorSwatch color={color4} handleColorChange={setColor4} />
                 <ColorSwatch color={color5} handleColorChange={setColor5} />
             </PaletteSwatches>
-            {/* <div>
-                {scale2.map((scaleColor) => (
-                    <div
-                        style={{
-                            display: "inline-block",
-                            height: 50,
-                            width: 50,
-                            background: scaleColor,
-                        }}
-                    />
-                ))}
-            </div> */}
             <Buttons>
                 <CustomButton
                     type="button"
@@ -150,7 +116,7 @@ const CreatePalette = () => {
                     onClick={handleRandomColor}
                 >
                     <GrRotateRight />
-                    generate
+                    Generate
                 </CustomButton>
                 <CustomButton
                     type="button"
@@ -160,28 +126,40 @@ const CreatePalette = () => {
                     onClick={handleCreatePalette}
                 >
                     <IoAddOutline />
-                    palette
+                    Palette
                 </CustomButton>
             </Buttons>
-            <h2>Custom Palettes</h2>
-            <CustomPalettesContainer>
-                {customPalettes.palettes.map((palette) => (
-                    <PaletteWrapper key={palette.id}>
-                        <ColorPalette
-                            palette={palette.colors}
-                            paletteID={palette.id}
-                            isEditable
-                        />
-                        <RemoveButton
-                            onClick={() => handleRemovePalette(palette.id)}
-                            type="button"
-                            name="remove palette"
-                        >
-                            <TiDeleteOutline />
-                        </RemoveButton>
-                    </PaletteWrapper>
-                ))}
-            </CustomPalettesContainer>
+            {customPalettes.palettes.length > 0 && (
+                <>
+                    <h2>Custom Palettes</h2>
+                    <ClearAllButton
+                        type="button"
+                        onClick={() => dispatch(clearAllCustomPalettes())}
+                    >
+                        Clear All
+                    </ClearAllButton>
+                    <CustomPalettesContainer>
+                        {customPalettes.palettes.map((palette) => (
+                            <PaletteWrapper key={palette.id}>
+                                <ColorPalette
+                                    palette={palette.colors}
+                                    paletteID={palette.id}
+                                    isEditable
+                                />
+                                <RemoveButton
+                                    onClick={() =>
+                                        handleRemovePalette(palette.id)
+                                    }
+                                    type="button"
+                                    name="remove palette"
+                                >
+                                    <TiDeleteOutline />
+                                </RemoveButton>
+                            </PaletteWrapper>
+                        ))}
+                    </CustomPalettesContainer>
+                </>
+            )}
         </CreatePaletteContainer>
     );
 };
