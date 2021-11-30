@@ -14,7 +14,6 @@ const MenuItem = ({ category, palettes, isSelected, handleSubmenu }) => {
                         <ColorPalette
                             paletteID={palette.id}
                             palette={palette.colors}
-                            // key={palette.id}
                         />
                     </div>
                 ))}

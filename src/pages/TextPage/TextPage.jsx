@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector } from "react-redux";
-
 import ColorCard from "../../components/ColorCard/ColorCard";
 import ColorCardsLayout from "../../components/ColorCardsLayout/ColorCardsLayout";
 import { selectCurrentPalette } from "../../redux/palette/paletteSlice";
@@ -26,25 +25,22 @@ const TextPage = () => {
             </p>
             <ColorCardsLayout>
                 {combinations.map((item, index) => {
+                    const [bg, fg, contrast] = item;
                     return (
-                        <ColorCard
-                            key={index}
-                            paletteColor={item[0]}
-                            textColor={item[1]}
-                        >
+                        <ColorCard key={index} bgColor={bg} fgColor={fg}>
                             <div>
                                 <h2>
-                                    #{item[1]} <br /> on #{item[0]}
+                                    #{fg} <br /> on #{bg}
                                 </h2>
                                 <p>
                                     The quick brown fox jumps over the lazy dog.
                                 </p>
                             </div>
                             <div>
-                                {item[2] < 4.5 && (
+                                {contrast < 4.5 && (
                                     <p>*Only good for large text</p>
                                 )}
-                                <p>Contrast Ratio: {item[2].toFixed(2)}</p>
+                                <p>Contrast Ratio: {contrast.toFixed(2)}</p>
                             </div>
                         </ColorCard>
                     );

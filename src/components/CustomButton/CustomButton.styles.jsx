@@ -18,11 +18,6 @@ export const CustomButtonContainer = styled.button`
     }
 
     &:hover {
-        /* border: 1px solid #${(props) =>
-            props.btnFg ? props.btnFg : "000000"}; */
-        /* background-color: #${(props) =>
-            props.btnFg ? props.btnFg : "000000"};
-        color: #${(props) => (props.btnBg ? props.btnBg : "000000")}; */
         transition: all 250ms ease-in-out;
         transform: scale(1.1);
     }

@@ -8,32 +8,21 @@ export const SliderContainer = styled.div`
     overflow-x: hidden;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
-    /* position: relative; */
 `;
 
 export const SlidesWrapper = styled.div`
-    /* height: 100%; */
     height: 90%;
     display: flex;
     background: aliceblue;
-    /* overflow: hidden; */
-    /* scroll-behavior: smooth;
-    scroll-snap-type: x mandatory; */
     transform: translateX(${(props) => props.slideNum * -100}%);
     transition: transform 1s ease;
 `;
 
 export const SliderButtons = styled.div`
     height: 10%;
-    /* width: 100%; */
-    /* position: absolute;
-    bottom: -40px;
-    left: 50%;
-    transform: translateX(-50%); */
     display: flex;
     align-self: center;
     align-items: center;
-    /* background: pink; */
     gap: 1.5rem;
 `;
 

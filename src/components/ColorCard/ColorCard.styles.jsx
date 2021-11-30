@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 const primaryStyles = css`
-    background-color: #${(props) => props.paletteColor};
+    background-color: #${(props) => props.bgColor};
 `;
 
 const gradientStyles = css`
@@ -27,7 +27,7 @@ export const ColorCardContainer = styled.div`
     justify-content: space-between;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    color: #${(props) => props.textColor};
+    color: #${(props) => props.fgColor};
     line-height: 1.5rem;
 
     ${getCardStyles}
@@ -45,7 +45,7 @@ export const CopyIconWrapper = styled.button`
     position: absolute;
     top: 1rem;
     right: 1rem;
-    color: #${(props) => props.textColor};
+    color: #${(props) => props.fgColor};
     background-color: transparent;
     cursor: pointer;
 

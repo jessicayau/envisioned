@@ -38,5 +38,3 @@ const ColorCard = ({ children, ...otherProps }) => {
 };
 
 export default ColorCard;
-
-// linear-gradient(#FFF88F, #FF9B67)

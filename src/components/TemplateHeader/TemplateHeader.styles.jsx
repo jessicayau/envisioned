@@ -9,7 +9,7 @@ export const TemplateHeaderContainer = styled.header`
     justify-content: space-between;
     align-items: center;
     padding: 0 5vw;
-    color: #${(props) => (props.textColor ? props.textColor : "000000")};
+    color: #${(props) => props.textColor};
     z-index: 1;
 
     svg {
@@ -62,7 +62,7 @@ export const TemplateLink = styled.span`
             position: absolute;
             bottom: -5px;
             left: 0;
-            background-color: #${(props) => (props.activeBg ? props.activeBg : "000000")};
+            background-color: #${(props) => props.activeBg};
         }
     }
 

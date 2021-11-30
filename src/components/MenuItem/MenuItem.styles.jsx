@@ -49,14 +49,9 @@ export const Submenu = styled.div`
         width: 100%;
         display: flex;
         justify-content: center;
-        /* border: 2px solid transparent; */
 
         &:last-child {
             margin-bottom: 10px;
         }
-
-        /* &:first-child {
-            margin-top: 10px;
-        } */
     }
 `;

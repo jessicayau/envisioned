@@ -1,52 +1,120 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import Slider from "../../components/Slider/Slider";
-import { selectCurrentPalette } from "../../redux/palette/paletteSlice";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { BsHouseFill } from "react-icons/bs";
+import CustomButton from "../../components/CustomButton/CustomButton";
+import TemplateHeader from "../../components/TemplateHeader/TemplateHeader";
 import {
-    BackgroundImage,
-    Slide,
-    SlideTitle,
-    Template2Container,
-    TemplateContent,
+    HeroSection,
+    Images,
+    ImageSection,
+    Stats,
+    TemplateContainer,
+    Title,
 } from "./Template2.styles";
+import {
+    getRandomPalette,
+    selectCurrentPalette,
+    selectVersion,
+} from "../../redux/palette/paletteSlice";
 
 const Template2 = () => {
     const palette = useSelector(selectCurrentPalette);
-    const [c1, c2, c3, c4, c5] = palette.colors;
+    const version = useSelector(selectVersion);
+    const dispatch = useDispatch();
 
-    console.log("temp2");
+    const [c1, setC1] = useState(palette.colors[0]);
+    const [c2, setC2] = useState(palette.colors[1]);
+    const [c3, setC3] = useState(palette.colors[2]);
+    const [c4, setC4] = useState(palette.colors[3]);
+    const [c5, setC5] = useState(palette.colors[4]);
+
+    useEffect(() => {
+        if (version === "light") {
+            setC1(palette.colors[0]);
+            setC2(palette.colors[1]);
+            setC3(palette.colors[2]);
+            setC4(palette.colors[3]);
+            setC5(palette.colors[4]);
+        } else {
+            setC1(palette.colors[4]);
+            setC2(palette.colors[3]);
+            setC3(palette.colors[2]);
+            setC4(palette.colors[1]);
+            setC5(palette.colors[0]);
+        }
+    }, [version, palette]);
+
+    const handleRandomPalette = () => {
+        dispatch(getRandomPalette());
+    };
+
     return (
-        <Template2Container>
-            {/* <TemplateContent
-                bgColor1={c1.bgColor}
-                bgColor2={c3.bgColor}
-                fgColor={c1.textColor}
-            > */}
-            <Slider slideLinks={["one", "two", "three"]}>
-                <Slide>
-                    <BackgroundImage
-                        bgColor={c5.bgColor}
-                        img="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                    />
-                    <SlideTitle fgColor={c2.bgColor}>Hello</SlideTitle>
-                </Slide>
-                <Slide>
-                    <BackgroundImage
-                        bgColor={c5.bgColor}
-                        img="https://images.unsplash.com/photo-1525874684015-58379d421a52?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
-                    />
-                    <SlideTitle fgColor={c2.bgColor}>Hello</SlideTitle>
-                </Slide>
-                <Slide>
-                    <BackgroundImage
-                        bgColor={c5.bgColor}
-                        img="https://images.unsplash.com/photo-1556115908-233c785befbe?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"
-                    />
-                    <SlideTitle fgColor={c2.bgColor}>Hello</SlideTitle>
-                </Slide>
-            </Slider>
-            {/* </TemplateContent> */}
-        </Template2Container>
+        <TemplateContainer fgColor={version === "light" ? c5.color : c1.color}>
+            <TemplateHeader
+                brand="Renovate"
+                links={["Projects", "Services"]}
+                button
+                btnBg={c2.color}
+                btnFg={c2.contrastColor}
+                textColor={version === "light" ? c5.color : c1.color}
+                activeBg={version === "light" ? c4.color : c2.color}
+                square
+            >
+                <BsHouseFill />
+            </TemplateHeader>
+            <HeroSection bgColor={version === "dark" && "rgba(0,0,0,.2)"}>
+                <Title titleColor={c3.color}>Headline</Title>
+                <p>
+                    This is just an example of how the color palette could look
+                    when applied. I hope you find inspiration from it! Also,
+                    check out the light/dark versions by clicking on the
+                    sun/moon at the bottom. Have fun!
+                </p>
+                <CustomButton
+                    square
+                    btnBg={c2.color}
+                    btnFg={c2.contrastColor}
+                    onClick={handleRandomPalette}
+                >
+                    Random Palette
+                </CustomButton>
+            </HeroSection>
+            <Stats bgColor={c3.color} fgColor={c3.contrastColor}>
+                <div className="stats-group">
+                    <span className="num">20</span>
+                    <span>years</span>
+                </div>
+                <div className="stats-group">
+                    <span className="num">1000+</span>
+                    <span>projects</span>
+                </div>
+                <div className="stats-group">
+                    <span className="num">30</span>
+                    <span>awards</span>
+                </div>
+            </Stats>
+            <ImageSection
+                bgColor={c1.color}
+                fgColor={c1.contrastColor}
+                titleColor={c4.color}
+            >
+                <h2>Projects</h2>
+                <Images>
+                    <div>
+                        <img src="/images/dining-room.jpg" alt="dining room" />
+                        <h3>Project Title</h3>
+                    </div>
+                    <div>
+                        <img src="/images/room.jpg" alt="room" />
+                        <h3>Project Title</h3>
+                    </div>
+                    <div>
+                        <img src="/images/kitchen.jpg" alt="kitchen" />
+                        <h3>Project Title</h3>
+                    </div>
+                </Images>
+            </ImageSection>
+        </TemplateContainer>
     );
 };
 

@@ -11,6 +11,7 @@ const Sidebar = ({ sidebarIsOpen }) => {
     const [selected, setSelected] = useState("");
     const palettesData = useSelector(selectAllPalettesData);
     const customPalettesData = useSelector(selectCustomPalettes);
+    console.log("sidebar");
 
     const handleSubmenu = (item) => {
         if (selected === item) {

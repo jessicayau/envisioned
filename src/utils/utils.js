@@ -1,10 +1,5 @@
 import chroma from "chroma-js";
 
-// convert rgb to hex
-// export const rgbToHex = (r, g, b) => {
-//     return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
-// };
-
 // generate random color palette
 export const generateRandomPalette = () => {
     const firstColor = "#FFFFFF";
@@ -26,54 +21,21 @@ export const generateRandomPalette = () => {
     return randomPaletteColors;
 };
 
-// convert hex to rgb
-export const hexToRGB = (hex) => {
-    let shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-    hex = hex.replace(shorthandRegex, function (m, r, g, b) {
-        return r + r + g + g + b + b;
+// get luminance for each color in palette
+export const paletteLuminances = (paletteColors) =>
+    paletteColors.map((color) => {
+        return chroma(color).luminance();
     });
 
-    let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    return result
-        ? {
-              r: parseInt(result[1], 16),
-              g: parseInt(result[2], 16),
-              b: parseInt(result[3], 16),
-          }
-        : null;
-};
-
-// convert palette hex colors to rgb
-export const rgbPalette = (palette) =>
-    palette.map((colorHex) => {
-        return hexToRGB(colorHex);
-    });
-
-// get luminance of rgb color
-export const luminance = (r, g, b) => {
-    const a = [r, g, b].map(function (v) {
-        v /= 255;
-        return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
-    });
-    return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
-};
-
-// return array of luminances for palette's colors
-export const luminancePalette = (rgbPalette) =>
-    rgbPalette.map((colorRGB) => {
-        return luminance(colorRGB.r, colorRGB.g, colorRGB.b);
-    });
-
-// sort custom palette colors before adding to database
+// sort custom palette colors before adding to palettes
 export const sortCustomColors = (newColors) => {
-    const rgbColors = rgbPalette(newColors);
-    const colorsLuminance = luminancePalette(rgbColors);
+    const colorsLuminances = paletteLuminances(newColors);
 
     const unsortedColors = [];
     for (let i = 0; i < newColors.length; i++) {
         const colorObj = {
             color: newColors[i],
-            luminance: colorsLuminance[i],
+            luminance: colorsLuminances[i],
         };
         unsortedColors.push(colorObj);
     }
@@ -87,24 +49,21 @@ export const sortCustomColors = (newColors) => {
 };
 
 // const contrastRatioLight =
-//     (luminancePalette[0] + 0.05) / (luminancePalette[2] + 0.05);
+//     (paletteLuminances[0] + 0.05) / (paletteLuminances[2] + 0.05);
 // const contrastRatioDark =
-//     (luminancePalette[2] + 0.05) / (luminancePalette[4] + 0.05);
+//     (paletteLuminances[2] + 0.05) / (paletteLuminances[4] + 0.05);
 
-// const textColor = (light, dark) => {
+// const contrastColor = (light, dark) => {
 //     if (light > dark) {
 //         return lightHex;
 //     } else return darkHex;
 // };
 
 export const getPaletteInfo = (id, hexColors) => {
-    const rgbColors = rgbPalette(hexColors);
-    const luminanceColors = luminancePalette(rgbColors);
-    const textColors = luminanceColors.map((luminanceColor) => {
-        const contrastRatioLight =
-            (luminanceColors[0] + 0.05) / (luminanceColor + 0.05);
-        const contrastRatioDark =
-            (luminanceColor + 0.05) / (luminanceColors[4] + 0.05);
+    const luminances = paletteLuminances(hexColors);
+    const contrastColors = luminances.map((luminance) => {
+        const contrastRatioLight = (luminances[0] + 0.05) / (luminance + 0.05);
+        const contrastRatioDark = (luminance + 0.05) / (luminances[4] + 0.05);
         if (contrastRatioLight > contrastRatioDark) {
             return hexColors[0];
         } else {
@@ -115,13 +74,12 @@ export const getPaletteInfo = (id, hexColors) => {
     const paletteInfo = { id: id, colors: [] };
     for (let i = 0; i < hexColors.length; i++) {
         let colorInfo = {
-            bgColor: hexColors[i],
-            luminance: luminanceColors[i],
-            textColor: textColors[i],
+            color: hexColors[i],
+            luminance: luminances[i],
+            contrastColor: contrastColors[i],
         };
         paletteInfo.colors.push(colorInfo);
     }
-
     return paletteInfo;
 };
 
@@ -129,15 +87,15 @@ export const getContrastColor = (luminance, light, dark) => {
     const contrastRatioLight = (light.luminance + 0.05) / (luminance + 0.05);
     const contrastRatioDark = (luminance + 0.05) / (dark.luminance + 0.05);
     if (contrastRatioLight > contrastRatioDark) {
-        return light.bgColor;
+        return light.color;
     } else {
-        return dark.bgColor;
+        return dark.color;
     }
 };
 
 // export const getPaletteInfo = (id, hexColors) => {
 //     const rgbColors = rgbPalette(hexColors);
-//     const luminanceColors = luminancePalette(rgbColors);
+//     const luminances = paletteLuminances(rgbColors);
 
 //     const paletteInfo = {
 //         id: id,
@@ -146,8 +104,8 @@ export const getContrastColor = (luminance, light, dark) => {
 
 //     for (let i = 0; i < hexColors.length; i++) {
 //         let colorInfo = {
-//             bgColor: hexColors[i],
-//             luminance: luminanceColors[i],
+//             color: hexColors[i],
+//             luminance: luminances[i],
 //         };
 //         paletteInfo.colors.push(colorInfo);
 //     }
@@ -161,46 +119,41 @@ export const getContrastColor = (luminance, light, dark) => {
 //     const dark = paletteInfo.colors[4];
 
 //     paletteInfo.colors.forEach((color) => {
-//         color.textColor = getContrastColor(color.luminance, light, dark);
+//         color.contrastColor = getContrastColor(color.luminance, light, dark);
 //     });
 
 //     return paletteInfo;
 // };
 
+// combinations for text and background that meet contrast requirements
 export const getCombinations = (palette) => {
     const combinations = [];
 
-    palette.forEach((color) => {
+    palette.forEach((color1) => {
         palette.forEach((color2) => {
-            const contrastRatio = chroma.contrast(
-                color.bgColor,
-                color2.bgColor
-            );
+            const contrastRatio = chroma.contrast(color1.color, color2.color);
             return (
-                color !== color2 &&
+                color1 !== color2 &&
                 contrastRatio >= 3.0 &&
-                combinations.push([
-                    color.bgColor,
-                    color2.bgColor,
-                    contrastRatio,
-                ])
+                combinations.push([color1.color, color2.color, contrastRatio])
             );
         });
     });
     return combinations;
 };
 
+// all color pair combinations for gradients
 export const getAllCombinations = (palette) => {
     const combinations = [];
 
-    palette.forEach((color) => {
+    palette.forEach((color1) => {
         palette.forEach((color2) => {
             return (
-                color !== color2 &&
+                color1 !== color2 &&
                 combinations.push([
-                    color.bgColor,
-                    color2.bgColor,
-                    color.textColor,
+                    color1.color,
+                    color2.color,
+                    color1.contrastColor,
                 ])
             );
         });

@@ -14,13 +14,16 @@ const GradientsPage = () => {
         <GradientsPageContainer>
             <h1>Gradients</h1>
             <ColorCardsLayout>
-                {allCombinations.map((set, index) => (
-                    <ColorCard
-                        key={index}
-                        gradient={`linear-gradient(#${set[0]}, #${set[1]})`}
-                        textColor={set[2]}
-                    />
-                ))}
+                {allCombinations.map((set, index) => {
+                    const [color1, color2, textColor] = set;
+                    return (
+                        <ColorCard
+                            key={index}
+                            gradient={`linear-gradient(#${color1}, #${color2})`}
+                            fgColor={textColor}
+                        />
+                    );
+                })}
             </ColorCardsLayout>
         </GradientsPageContainer>
     );

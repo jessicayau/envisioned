@@ -32,19 +32,19 @@ const CreatePalette = () => {
     const dispatch = useDispatch();
     const [c1, c2, c3, c4, c5] = currentPalette.colors;
 
-    const [color1, setColor1] = useState("#" + c1.bgColor);
-    const [color2, setColor2] = useState("#" + c2.bgColor);
-    const [color3, setColor3] = useState("#" + c3.bgColor);
-    const [color4, setColor4] = useState("#" + c4.bgColor);
-    const [color5, setColor5] = useState("#" + c5.bgColor);
+    const [color1, setColor1] = useState("#" + c1.color);
+    const [color2, setColor2] = useState("#" + c2.color);
+    const [color3, setColor3] = useState("#" + c3.color);
+    const [color4, setColor4] = useState("#" + c4.color);
+    const [color5, setColor5] = useState("#" + c5.color);
 
     // sets swatch colors to current palette colors whenever palette changes
     useEffect(() => {
-        setColor1("#" + c1.bgColor);
-        setColor2("#" + c2.bgColor);
-        setColor3("#" + c3.bgColor);
-        setColor4("#" + c4.bgColor);
-        setColor5("#" + c5.bgColor);
+        setColor1("#" + c1.color);
+        setColor2("#" + c2.color);
+        setColor3("#" + c3.color);
+        setColor4("#" + c4.color);
+        setColor5("#" + c5.color);
     }, [c1, c2, c3, c4, c5]);
 
     // handles addition of new palette
@@ -111,8 +111,8 @@ const CreatePalette = () => {
                 <CustomButton
                     type="button"
                     name="generate palette"
-                    btnBg={c5.bgColor}
-                    btnFg={c5.textColor}
+                    btnBg={c5.color}
+                    btnFg={c5.contrastColor}
                     onClick={handleRandomColor}
                 >
                     <GrRotateRight />
@@ -121,8 +121,8 @@ const CreatePalette = () => {
                 <CustomButton
                     type="button"
                     name="add palette"
-                    btnBg={c2.bgColor}
-                    btnFg={c2.textColor}
+                    btnBg={c2.color}
+                    btnFg={c2.contrastColor}
                     onClick={handleCreatePalette}
                 >
                     <IoAddOutline />

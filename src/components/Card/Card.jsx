@@ -17,7 +17,7 @@ const Card = ({
             {icon && <CardIcon {...otherProps}>{icon}</CardIcon>}
             {image && <img src={image} alt="random" />}
             {title && <CardTitle>{title}</CardTitle>}
-            {children && <CardContent {...otherProps}>{children}</CardContent>}
+            <CardContent {...otherProps}>{children}</CardContent>
             {btn && (
                 <a href={`#${title}`}>
                     <CustomButton btnBg={btnBg} btnFg={btnFg} {...otherProps}>

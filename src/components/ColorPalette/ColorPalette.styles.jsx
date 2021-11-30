@@ -4,7 +4,6 @@ export const ColorPaletteContainer = styled.div`
     display: flex;
     align-items: center;
     padding: 0.3rem 0;
-    /* padding: 0.2rem 0; */
     cursor: pointer;
     transform: ${(props) =>
         props.isCurrentPalette && !props.isEditable && "scaleX(1.2)"};
@@ -20,7 +19,7 @@ export const ColorPaletteContainer = styled.div`
 
     ${(props) =>
         !props.isCurrentPalette &&
-        !props.infoBar &&
+        !props.toolbar &&
         !props.isEditable &&
         `&:hover {
             transform: scaleX(1.2);
@@ -46,7 +45,7 @@ export const Span = styled.span`
     }
 
     &:hover {
-        transform: ${(props) => props.infoBar && "scale(1.5)"};
-        border: ${(props) => props.infoBar && "1px solid white"};
+        transform: ${(props) => props.toolbar && "scale(1.5)"};
+        border: ${(props) => props.toolbar && "1px solid white"};
     }
 `;

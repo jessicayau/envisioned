@@ -1,62 +1,152 @@
 import styled from "styled-components";
 
-export const Template2Container = styled.div`
-    height: 100%;
-    margin: 0 5vw;
-`;
-
-export const TemplateContent = styled.div`
-    height: 90%;
-    width: 100%;
-    /* background: ${(props) =>
-        `linear-gradient(#${props.bgColor1} 70%, #${props.bgColor2})`}; */
+export const TemplateContainer = styled.div`
     color: #${(props) => props.fgColor};
+    margin: 0 5vw;
     border: 1px solid lightgrey;
     position: relative;
 `;
 
-export const Slide = styled.div`
-    height: 100%;
-    width: 100%;
-    flex-shrink: 0;
+export const HeroSection = styled.div`
     position: relative;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-`;
-
-export const BackgroundImage = styled.div`
-    position: relative;
-    width: 100%;
-    height: 100%;
-    background-image: url(${(props) => props.img});
+    height: 85vh;
+    padding: 8rem 5vw 5rem;
+    background-color: ${(props) => props.bgColor};
+    background-image: url("/images/interior.png");
+    background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-    &::after {
-        content: "";
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        background-color: #${(props) => props.bgColor};
-        opacity: 0.5;
-        transition: opacity 1s ease;
+    p {
+        width: 70%;
+        line-height: 1.5rem;
+        text-align: center;
+        font-size: 1.1rem;
     }
 
-    &:hover {
-        &::after {
-            opacity: 0;
+    button {
+        margin-top: 2rem;
+    }
+
+    @media screen and (max-width: 767px) {
+        padding: 6rem 5vw 5rem;
+        background-position: 20%;
+        background-position: 25%;
+
+        p {
+            width: 95%;
+            font-size: 1rem;
+        }
+
+        h1 {
+            font-size: 3rem;
         }
     }
 `;
 
-export const SlideTitle = styled.h1`
+export const Title = styled.h1`
+    font-size: 6vw;
+    margin-bottom: 1rem;
+    color: #${(props) => props.titleColor};
+`;
+
+export const Stats = styled.div`
+    height: 7rem;
+    width: calc(100% - 10vw);
+    background-color: #${(props) => props.bgColor};
     color: #${(props) => props.fgColor};
-    font-size: 4rem;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
     position: absolute;
-    bottom: 2rem;
-    left: 3rem;
+    left: 5vw;
+    transform: translateY(-3.5rem);
+    padding: 0 5%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    align-items: center;
+    transition: all 1s ease;
+
+    .stats-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 1.1rem;
+
+        span {
+            text-align: center;
+            text-transform: uppercase;
+        }
+        .num {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+    }
+
+    @media screen and (max-width: 767px) {
+        padding: 0 1rem;
+    }
+
+    @media screen and (max-width: 670px) {
+        height: 18rem;
+        padding: 1.5rem 0;
+        grid-template-columns: 1fr;
+        box-shadow: none;
+    }
+`;
+
+export const ImageSection = styled.div`
+    padding: 10rem 5vw 5rem;
+    background-color: #${(props) => props.bgColor};
+    color: #${(props) => props.fgColor};
+    transition: all 1s ease;
+
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        color: #${(props) => props.titleColor};
+        position: relative;
+
+        &::after {
+            content: "";
+            width: 4rem;
+            height: 2px;
+            position: absolute;
+            top: 55%;
+            transform: translateX(1rem);
+            background-color: #${(props) => props.titleColor};
+        }
+    }
+
+    @media screen and (max-width: 767px) {
+        padding: 10rem 5vw 5rem;
+    }
+
+    @media screen and (max-width: 670px) {
+        padding: 20rem 5vw 5rem;
+    }
+`;
+
+export const Images = styled.div`
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 3rem 2.5rem;
+
+    img {
+        width: 100%;
+        box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    h3 {
+        margin-top: 1.5rem;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    @media screen and (max-width: 767px) {
+        grid-template-columns: 1fr;
+    }
 `;

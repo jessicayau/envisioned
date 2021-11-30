@@ -9,11 +9,11 @@ import { Span, ColorPaletteContainer } from "./ColorPalette.styles";
 const ColorPalette = ({ palette, paletteID, ...otherProps }) => {
     const currentPalette = useSelector(selectCurrentPalette);
     const isCurrentPalette = paletteID === currentPalette.id;
-    const { infoBar, handleCopyColor } = otherProps;
+    const { toolbar, handleCopyColor } = otherProps;
     const dispatch = useDispatch();
 
     const handleGetPalette = () => {
-        if (!infoBar && !isCurrentPalette) {
+        if (!toolbar && !isCurrentPalette) {
             dispatch(getPalette({ paletteID: paletteID, palette: palette }));
         } else return;
     };
@@ -28,7 +28,7 @@ const ColorPalette = ({ palette, paletteID, ...otherProps }) => {
                 <Span
                     {...otherProps}
                     key={`${paletteID}-${index}`}
-                    onClick={infoBar && (() => handleCopyColor(color))}
+                    onClick={toolbar && (() => handleCopyColor(color))}
                     style={{ backgroundColor: `#${color}` }}
                 ></Span>
             ))}

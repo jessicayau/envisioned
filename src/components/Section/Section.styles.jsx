@@ -17,7 +17,6 @@ const rightLargeStyles = css`
 `;
 
 const cardsStyles = css`
-    /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
@@ -38,8 +37,6 @@ const getStyles = (props) => {
 };
 
 export const SectionContainer = styled.section`
-    /* min-height: 300px; */
-    /* padding-top: 7%; */
     background-color: #${(props) => props.bgColor};
     color: #${(props) => props.fgColor};
 `;
@@ -50,7 +47,6 @@ export const SectionWrapper = styled.div`
 
 export const SectionTitle = styled.h2`
     font-size: 2rem;
-    /* line-height: 3rem; */
     text-align: center;
     padding-bottom: 3rem;
     color: #${(props) => props.fgColor};

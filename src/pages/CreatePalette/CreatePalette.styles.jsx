@@ -14,8 +14,6 @@ export const CreatePaletteContainer = styled.div`
 `;
 
 export const TextContent = styled.div`
-    /* width: 50%; */
-
     padding: 2rem 0 4rem;
     display: flex;
     gap: 2rem;
@@ -27,7 +25,6 @@ export const TextContent = styled.div`
     }
 
     @media screen and (max-width: 767px) {
-        /* width: 80; */
         flex-direction: column;
         gap: 1rem;
 

@@ -25,7 +25,7 @@ export const HeroContainer = styled.section`
 
 export const Title = styled.h1`
     font-size: 5vw;
-    color: #${(props) => (props.fgColor ? props.fgColor : "000000")};
+    color: #${(props) => props.fgColor};
 
     @media screen and (max-width: 767px) {
         font-size: clamp(2.5rem, 8vw, 4rem);
@@ -33,7 +33,7 @@ export const Title = styled.h1`
 `;
 
 export const Text = styled.p`
-    color: #${(props) => (props.fgColor ? props.fgColor : "000000")};
+    color: #${(props) => props.fgColor};
     line-height: 1.6rem;
     font-size: 1.1rem;
     padding: 1rem 0;

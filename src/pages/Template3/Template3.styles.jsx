@@ -6,24 +6,9 @@ export const Template3Container = styled.div`
     padding: 0 5vw;
 `;
 
-export const Content = styled.div`
-    height: 90%;
-    width: 100%;
-    position: relative;
-    /* background: ${(props) =>
-        `linear-gradient(#${props.bgColor1}, #${props.bgColor2}, #${props.bgColor3})`}; */
-    color: #${(props) => props.fgColor};
-
-    /* svg {
-        height: 80%;
-        width: auto;
-    } */
-`;
-
 export const Slide = styled.div`
     width: 100%;
     flex-shrink: 0;
-    /* height: 100%; */
     font-size: 1.5rem;
     background: ${(props) => props.bgColor};
     display: flex;
@@ -50,19 +35,6 @@ export const Slide = styled.div`
         @media screen and (max-width: 425px) {
             width: 100%;
         }
-    }
-
-    .left {
-        width: 75%;
-        height: 100%;
-        background-color: black;
-        color: white;
-    }
-
-    .right {
-        width: 25%;
-        height: 100%;
-        background-color: pink;
     }
 
     h1 {

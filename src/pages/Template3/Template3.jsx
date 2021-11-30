@@ -1,16 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { selectCurrentPalette } from "../../redux/palette/paletteSlice";
-import {
-    Background,
-    Content,
-    Form,
-    ImageContainer,
-    ImgSlide,
-    Slide,
-    Template,
-    Template3Container,
-} from "./Template3.styles";
+import { Form, Slide, Template3Container } from "./Template3.styles";
 import { ReactComponent as WaterBottle } from "../../assets/images/bottle.svg";
 import Slider from "../../components/Slider/Slider";
 import CustomButton from "../../components/CustomButton/CustomButton";
@@ -18,46 +9,15 @@ import FormInput from "../../FormInput/FormInput";
 
 const Template3 = () => {
     const palette = useSelector(selectCurrentPalette);
-    const [c1, c2, c3, c4, c5] = palette.colors;
+    const [, c2, c3, c4, c5] = palette.colors;
 
     return (
-        <Template3Container
-        // bgColor1={c2.bgColor}
-        // bgColor2={c3.bgColor}
-        // bgColor3={c5.bgColor}
-        >
-            {/* <Content
-                bgColor1={c2.bgColor}
-                bgColor2={c3.bgColor}
-                bgColor3={c5.bgColor}
-                className="backgroundGradient"
-            > */}
-            <Slider
-                slideLinks={[
-                    "gradientOne",
-                    "gradientTwo",
-                    "gradientThree",
-                    "gradientFour",
-                ]}
-            >
+        <Template3Container>
+            <Slider slideLinks={["slideOne", "slideTwo", "slideThree"]}>
                 <Slide
                     className="slide"
-                    id="gradientOne"
-                    bgColor={`linear-gradient(#${c2.bgColor}, #${c3.bgColor})`}
-                >
-                    <WaterBottle />
-                </Slide>
-                <Slide
-                    className="slide"
-                    id="gradientTwo"
-                    bgColor={`linear-gradient(#${c2.bgColor}, #${c3.bgColor}, #${c4.bgColor})`}
-                >
-                    <div className="bgImage"></div>
-                </Slide>
-                <Slide
-                    className="slide"
-                    id="gradientThree"
-                    bgColor={`linear-gradient(#${c2.bgColor}, #${c3.bgColor})`}
+                    id="slideOne"
+                    bgColor={`linear-gradient(#${c2.color}, #${c4.color})`}
                 >
                     <h1>Login</h1>
                     <Form>
@@ -78,23 +38,26 @@ const Template3 = () => {
                             readOnly
                         />
 
-                        <CustomButton>Login</CustomButton>
+                        <CustomButton btnBg={c5.color} btnFg={c5.contrastColor}>
+                            Login
+                        </CustomButton>
                     </Form>
                 </Slide>
-                <Slide className="slide" id="gradientFour">
-                    <div
-                        style={{
-                            display: "flex",
-                            height: "100%",
-                            width: "100%",
-                        }}
-                    >
-                        <div className="left">hello</div>
-                        <div className="right">goodbye</div>
-                    </div>
+                <Slide
+                    className="slide"
+                    id="slideTwo"
+                    bgColor={`linear-gradient(#${c2.color}, #${c3.color})`}
+                >
+                    <WaterBottle />
+                </Slide>
+                <Slide
+                    className="slide"
+                    id="slideThree"
+                    bgColor={`linear-gradient(#${c2.color}, #${c3.color}, #${c4.color})`}
+                >
+                    <div className="bgImage"></div>
                 </Slide>
             </Slider>
-            {/* </Content> */}
         </Template3Container>
     );
 };

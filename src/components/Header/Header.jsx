@@ -31,13 +31,13 @@ const Header = () => {
                     <NavLink to="/create">Create</NavLink>
                 </NavItem>
                 <NavItem onClick={handleMenu}>
-                    <NavLink to="/templates/1">Template1</NavLink>
+                    <NavLink to="/templates/1">Template 1</NavLink>
                 </NavItem>
                 <NavItem onClick={handleMenu}>
-                    <NavLink to="/templates/4">Template4</NavLink>
+                    <NavLink to="/templates/2">Template 2</NavLink>
                 </NavItem>
                 <NavItem onClick={handleMenu}>
-                    <NavLink to="/templates/3">Template3</NavLink>
+                    <NavLink to="/templates/3">Template 3</NavLink>
                 </NavItem>
                 <NavItem onClick={handleMenu}>
                     <NavLink to="/text">Text</NavLink>

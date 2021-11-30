@@ -231,7 +231,7 @@ export const menuData = [
             },
             {
                 id: 56,
-                colors: ["E3E8E5", "ACBBB1", "456C7E", "5A3D55", "28001E"],
+                colors: ["E3E8E5", "ACBBB1", "296E8C", "5A3D55", "28001E"],
             },
             {
                 id: 57,
@@ -303,7 +303,7 @@ export const cardData = [
     {
         title: "contrast",
         content:
-            "Visual heirarchy is very important when it comes to design. Choose a color scheme with contrasting colors. Contrast draws attention to certain parts of the design. It also aids in accessibility.",
+            "Visual heirarchy is very important when it comes to design. Choose a color scheme with contrasting colors. Contrast draws attention to certain parts of the design. Make those CTA's pop!",
     },
 ];
 
