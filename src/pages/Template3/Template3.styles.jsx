@@ -16,8 +16,9 @@ export const Slide = styled.div`
     justify-content: center;
     align-items: center;
 
-    svg {
+    img {
         height: 80%;
+        max-width: 100%;
     }
 
     .bgImage {

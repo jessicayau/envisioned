@@ -2,10 +2,9 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { selectCurrentPalette } from "../../redux/palette/paletteSlice";
 import { Form, Slide, Template3Container } from "./Template3.styles";
-import { ReactComponent as WaterBottle } from "../../assets/images/bottle.svg";
 import Slider from "../../components/Slider/Slider";
 import CustomButton from "../../components/CustomButton/CustomButton";
-import FormInput from "../../FormInput/FormInput";
+import FormInput from "../../components/FormInput/FormInput";
 
 const Template3 = () => {
     const palette = useSelector(selectCurrentPalette);
@@ -48,7 +47,7 @@ const Template3 = () => {
                     id="slideTwo"
                     bgColor={`linear-gradient(#${c2.color}, #${c3.color})`}
                 >
-                    <WaterBottle />
+                    <img src="/images/bottle.png" alt="bottle" />
                 </Slide>
                 <Slide
                     className="slide"

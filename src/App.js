@@ -6,9 +6,21 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import Main from "./components/Main/Main";
 import GlobalStyle from "./globalStyles";
 import ToggleButton from "./components/ToggleButton/ToggleButton";
+import { useDispatch, useSelector } from "react-redux";
+import {
+    fetchPalettesData,
+    selectIsLoading,
+} from "./redux/palette/paletteSlice";
+import Spinner from "./components/Spinner/Spinner";
 
 const App = () => {
     const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
+    const isLoading = useSelector(selectIsLoading);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchPalettesData());
+    }, [dispatch]);
 
     useEffect(() => {
         const handleResize = () => {
@@ -40,20 +52,26 @@ const App = () => {
                     },
                 }}
             >
-                <Router>
-                    <Sidebar sidebarIsOpen={sidebarIsOpen} />
-                    <Main sidebarIsOpen={sidebarIsOpen} />
-                    <ToggleButton
-                        sidebarIsOpen={sidebarIsOpen}
-                        toggleSidebar={handleToggleSidebar}
-                    >
-                        {sidebarIsOpen ? (
-                            <BsFillCaretLeftFill style={{ color: "black" }} />
-                        ) : (
-                            <BsFillCaretRightFill />
-                        )}
-                    </ToggleButton>
-                </Router>
+                {isLoading ? (
+                    <Spinner />
+                ) : (
+                    <Router>
+                        <Sidebar sidebarIsOpen={sidebarIsOpen} />
+                        <Main sidebarIsOpen={sidebarIsOpen} />
+                        <ToggleButton
+                            sidebarIsOpen={sidebarIsOpen}
+                            toggleSidebar={handleToggleSidebar}
+                        >
+                            {sidebarIsOpen ? (
+                                <BsFillCaretLeftFill
+                                    style={{ color: "black" }}
+                                />
+                            ) : (
+                                <BsFillCaretRightFill />
+                            )}
+                        </ToggleButton>
+                    </Router>
+                )}
             </IconContext.Provider>
         </div>
     );

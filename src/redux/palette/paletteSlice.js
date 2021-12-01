@@ -1,15 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { menuData } from "../../assets/data";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { retrieveAllCollections } from "../../firebase/firebase";
 import { getPaletteInfo } from "../../utils/utils";
-
-const initialPalette = getPaletteInfo(
-    menuData[1].palettes[3].id,
-    menuData[1].palettes[3].colors
-);
+import { initialPalette } from "../../assets/data";
 
 const initialState = {
-    allPalettes: menuData,
-    currentPalette: initialPalette,
+    isLoading: false,
+    errorMessage: "",
+    allPalettes: [],
+    currentPalette: getPaletteInfo(initialPalette.id, initialPalette.palette),
     customPalettes: {
         categoryId: 7,
         category: "Custom",
@@ -18,13 +16,19 @@ const initialState = {
     version: "light",
 };
 
+// fetch data from firestore
+export const fetchPalettesData = createAsyncThunk(
+    "palette/fetchData",
+    async (thunkAPI) => {
+        const response = await retrieveAllCollections();
+        return response;
+    }
+);
+
 export const paletteSlice = createSlice({
     name: "palette",
     initialState,
     reducers: {
-        // getAllPalettes: (state) => {
-        //     state.allPalettes = menuData;
-        // },
         getPalette: (state, action) => {
             state.currentPalette = getPaletteInfo(
                 action.payload.paletteID,
@@ -42,7 +46,6 @@ export const paletteSlice = createSlice({
                 randomPalette.colors
             );
         },
-
         addCustomPalette: (state, action) => {
             state.customPalettes.palettes.push(action.payload);
         },
@@ -60,6 +63,21 @@ export const paletteSlice = createSlice({
             state.version = action.payload;
         },
     },
+    extraReducers: {
+        [fetchPalettesData.pending]: (state) => {
+            state.isLoading = true;
+        },
+        [fetchPalettesData.fulfilled]: (state, action) => {
+            state.isLoading = false;
+            state.allPalettes = action.payload;
+            state.errorMessage = "";
+        },
+        [fetchPalettesData.rejected]: (state, action) => {
+            state.isLoading = false;
+            state.allPalettes.push(action.payload);
+            state.errorMessage = action.payload;
+        },
+    },
 });
 
 // selectors
@@ -67,6 +85,7 @@ export const selectAllPalettesData = (state) => state.palette.allPalettes;
 export const selectCurrentPalette = (state) => state.palette.currentPalette;
 export const selectCustomPalettes = (state) => state.palette.customPalettes;
 export const selectVersion = (state) => state.palette.version;
+export const selectIsLoading = (state) => state.palette.isLoading;
 
 // actions
 export const {
