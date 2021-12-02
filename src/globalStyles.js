@@ -6,6 +6,7 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         padding: 0;
         font-family: "Lato", sans-serif;
+        transition: background 500ms ease;
     }
 
     a {

@@ -1,28 +1,33 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router";
 import { selectCurrentPalette } from "../../redux/palette/paletteSlice";
-import { ReactComponent as AstronautSVG } from "../../assets/images/astronaut.svg";
 import CustomButton from "../../components/CustomButton/CustomButton";
 import { Message, PageNotFoundContainer, Title } from "./PageNotFound.styles";
 
 const PageNotFound = () => {
-    const palette = useSelector(selectCurrentPalette);
-    const [c1, c2, c3, c4, c5] = palette.colors;
+    const currentPalette = useSelector(selectCurrentPalette);
+    const [c1, , c3, , c5] = currentPalette.colors;
+    const history = useHistory();
 
     return (
         <PageNotFoundContainer
-            bgColor1={c1.bgColor}
-            bgColor2={c3.bgColor}
-            fgColor={c1.textColor}
+            bgColor1={c1.color}
+            bgColor2={c3.color}
+            fgColor={c1.contrastColor}
         >
-            <AstronautSVG />
+            <img src="/images/astronaut.png" alt="astronaut" />
             <div>
-                <Title fgColor={c3.bgColor} outline={c3.textColor}>
+                <Title fgColor={c3.color} outline={c3.contrastColor}>
                     404
                 </Title>
                 <Message>The page you're looking for doesn't exist...</Message>
-                <CustomButton bgColor={c5.bgColor} fgColor={c5.textColor}>
-                    Go Back
+                <CustomButton
+                    btnBg={c5.color}
+                    btnFg={c5.contrastColor}
+                    onClick={() => history.push("/")}
+                >
+                    Go Home
                 </CustomButton>
             </div>
         </PageNotFoundContainer>

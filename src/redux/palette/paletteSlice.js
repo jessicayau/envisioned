@@ -5,7 +5,7 @@ import { initialPalette } from "../../assets/data";
 
 const initialState = {
     isLoading: false,
-    errorMessage: "",
+    errorMessage: undefined,
     allPalettes: [],
     currentPalette: getPaletteInfo(initialPalette.id, initialPalette.palette),
     customPalettes: {
@@ -56,7 +56,7 @@ export const paletteSlice = createSlice({
                 );
             state.currentPalette = initialPalette;
         },
-        clearAllCustomPalettes: (state, action) => {
+        clearAllCustomPalettes: (state) => {
             state.customPalettes.palettes = [];
         },
         changeVersion: (state, action) => {
@@ -70,7 +70,7 @@ export const paletteSlice = createSlice({
         [fetchPalettesData.fulfilled]: (state, action) => {
             state.isLoading = false;
             state.allPalettes = action.payload;
-            state.errorMessage = "";
+            state.errorMessage = undefined;
         },
         [fetchPalettesData.rejected]: (state, action) => {
             state.isLoading = false;
@@ -86,6 +86,7 @@ export const selectCurrentPalette = (state) => state.palette.currentPalette;
 export const selectCustomPalettes = (state) => state.palette.customPalettes;
 export const selectVersion = (state) => state.palette.version;
 export const selectIsLoading = (state) => state.palette.isLoading;
+export const selectErrorMessage = (state) => state.palette.errorMessage;
 
 // actions
 export const {

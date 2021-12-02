@@ -10,6 +10,11 @@ export const SidebarContainer = styled.div`
     background-color: white;
     transition: all 250ms ease-in-out;
     z-index: 15;
+
+    p {
+        margin-top: 2rem;
+        line-height: 1.3rem;
+    }
 `;
 
 export const Categories = styled.div`

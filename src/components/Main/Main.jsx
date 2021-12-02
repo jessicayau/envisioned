@@ -11,6 +11,7 @@ import ScrollToTop from "../ScrollToTop";
 import TextPage from "../../pages/TextPage/TextPage";
 import GradientsPage from "../../pages/GradientsPage/GradientsPage";
 import CreatePalette from "../../pages/CreatePalette/CreatePalette";
+import PageNotFound from "../../pages/PageNotFound/PageNotFound";
 
 const Main = ({ sidebarIsOpen }) => {
     return (
@@ -26,6 +27,7 @@ const Main = ({ sidebarIsOpen }) => {
                     <Route path="/templates/1" component={Template1} />
                     <Route path="/templates/2" component={Template2} />
                     <Route path="/templates/3" component={Template3} />
+                    <Route component={PageNotFound} />
                 </Switch>
             </ContentContainer>
             <Toolbar />
