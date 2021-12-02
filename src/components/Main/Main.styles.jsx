@@ -11,7 +11,7 @@ export const MainContainer = styled.div`
     }
 `;
 
-export const ContentContainer = styled.div`
+export const ContentContainer = styled.main`
     height: calc(100vh - 8rem);
     width: 100%;
     overflow-y: scroll;

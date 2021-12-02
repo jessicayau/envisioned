@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ToolbarContainer = styled.div`
+export const ToolbarContainer = styled.footer`
     position: relative;
     height: 4rem;
     width: 100%;
@@ -33,6 +33,16 @@ export const Icons = styled.div`
     gap: 1rem;
 `;
 
+export const IconContainer = styled.button`
+    position: relative;
+
+    &:hover {
+        .tooltip {
+            display: block;
+        }
+    }
+`;
+
 export const CopiedMessage = styled.div`
     position: absolute;
     width: 200px;
@@ -45,7 +55,7 @@ export const CopiedMessage = styled.div`
     font-weight: bold;
     color: black;
     background-color: white;
-    border: 1px solid grey;
+    border: 1px solid rgba(200, 200, 241, 0.5);
     animation: shiftUp 250ms linear forwards;
     z-index: 5;
 

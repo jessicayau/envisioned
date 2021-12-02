@@ -5,7 +5,6 @@ export const CustomButtonContainer = styled.button`
     margin-top: 1rem;
     padding: 0 2rem;
     border-radius: ${(props) => (props.square ? 0 : "10px")};
-    border: 2px solid #${(props) => (props.btnBg ? props.btnBg : "000000")};
     background-color: #${(props) => (props.btnBg ? props.btnBg : "ffffff")};
     color: #${(props) => (props.btnFg ? props.btnFg : "000000")};
     font-size: 1.1rem;

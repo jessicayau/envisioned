@@ -110,7 +110,7 @@ const CreatePalette = () => {
             <Buttons>
                 <CustomButton
                     type="button"
-                    name="generate palette"
+                    aria-label="generate palette"
                     btnBg={c5.color}
                     btnFg={c5.contrastColor}
                     onClick={handleRandomColor}
@@ -120,7 +120,7 @@ const CreatePalette = () => {
                 </CustomButton>
                 <CustomButton
                     type="button"
-                    name="add palette"
+                    aria-label="add palette"
                     btnBg={c2.color}
                     btnFg={c2.contrastColor}
                     onClick={handleCreatePalette}

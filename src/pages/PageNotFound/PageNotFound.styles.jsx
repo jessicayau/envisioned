@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const PageNotFoundContainer = styled.div`
     width: 100%;
     height: calc(100vh - 8rem);
-    /* margin: 0 5vw; */
     padding: 5%;
     display: flex;
     justify-content: space-evenly;

@@ -26,7 +26,7 @@ export const ColorPaletteContainer = styled.div`
         }`}
 `;
 
-export const Span = styled.span`
+export const PaletteColor = styled.span`
     height: 35px;
     width: 35px;
     border-top: 1px solid rgba(200, 200, 241, 0.5);

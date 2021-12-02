@@ -1,6 +1,6 @@
 import React, { useCallback, useState, useRef } from "react";
 import { HexColorInput, HexColorPicker } from "react-colorful";
-import useClickOutside from "../../useClickOutside";
+import useClickOutside from "../../hooks/useClickOutside";
 import {
     ColorPicker,
     ColorSwatchContainer,

@@ -25,7 +25,7 @@ const ColorCard = ({ children, ...otherProps }) => {
                 <>
                     <CopyIconWrapper
                         type="button"
-                        name="copy gradient"
+                        aria-label="copy gradient"
                         {...otherProps}
                     >
                         <BiCopy onClick={() => handleCopyColors(gradient)} />

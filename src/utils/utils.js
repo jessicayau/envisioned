@@ -48,17 +48,7 @@ export const sortCustomColors = (newColors) => {
     return colorsArr;
 };
 
-// const contrastRatioLight =
-//     (paletteLuminances[0] + 0.05) / (paletteLuminances[2] + 0.05);
-// const contrastRatioDark =
-//     (paletteLuminances[2] + 0.05) / (paletteLuminances[4] + 0.05);
-
-// const contrastColor = (light, dark) => {
-//     if (light > dark) {
-//         return lightHex;
-//     } else return darkHex;
-// };
-
+// get info (color, luminance and contrast color) for each color in palette as an object
 export const getPaletteInfo = (id, hexColors) => {
     const luminances = paletteLuminances(hexColors);
     const contrastColors = luminances.map((luminance) => {
@@ -82,48 +72,6 @@ export const getPaletteInfo = (id, hexColors) => {
     }
     return paletteInfo;
 };
-
-export const getContrastColor = (luminance, light, dark) => {
-    const contrastRatioLight = (light.luminance + 0.05) / (luminance + 0.05);
-    const contrastRatioDark = (luminance + 0.05) / (dark.luminance + 0.05);
-    if (contrastRatioLight > contrastRatioDark) {
-        return light.color;
-    } else {
-        return dark.color;
-    }
-};
-
-// export const getPaletteInfo = (id, hexColors) => {
-//     const rgbColors = rgbPalette(hexColors);
-//     const luminances = paletteLuminances(rgbColors);
-
-//     const paletteInfo = {
-//         id: id,
-//         colors: [],
-//     };
-
-//     for (let i = 0; i < hexColors.length; i++) {
-//         let colorInfo = {
-//             color: hexColors[i],
-//             luminance: luminances[i],
-//         };
-//         paletteInfo.colors.push(colorInfo);
-//     }
-
-//     // sort colors by luminance
-//     paletteInfo.colors.sort(function (a, b) {
-//         return b.luminance - a.luminance;
-//     });
-
-//     const light = paletteInfo.colors[0];
-//     const dark = paletteInfo.colors[4];
-
-//     paletteInfo.colors.forEach((color) => {
-//         color.contrastColor = getContrastColor(color.luminance, light, dark);
-//     });
-
-//     return paletteInfo;
-// };
 
 // combinations for text and background that meet contrast requirements
 export const getCombinations = (palette) => {

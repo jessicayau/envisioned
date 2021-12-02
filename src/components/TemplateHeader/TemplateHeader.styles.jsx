@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const TemplateHeaderContainer = styled.header`
+export const TemplateHeaderContainer = styled.div`
     position: absolute;
     top: 0;
     width: 100%;

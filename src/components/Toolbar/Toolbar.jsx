@@ -8,9 +8,15 @@ import {
     selectVersion,
 } from "../../redux/palette/paletteSlice";
 import ColorPalette from "../ColorPalette/ColorPalette";
-import { CopiedMessage, Icons, ToolbarContainer } from "./Toolbar.styles";
+import {
+    CopiedMessage,
+    IconContainer,
+    Icons,
+    ToolbarContainer,
+} from "./Toolbar.styles";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router";
+import Tooltip from "../Tooltip/Tooltip";
 
 const Toolbar = () => {
     const paletteInfo = useSelector(selectCurrentPalette);
@@ -53,17 +59,26 @@ const Toolbar = () => {
                     />
                 </div>
                 <Icons>
-                    <BiCopy onClick={handleCopyPalette} />
+                    <IconContainer aria-label="copy palette">
+                        <BiCopy onClick={handleCopyPalette} />
+                        <Tooltip>Copy</Tooltip>
+                    </IconContainer>
                     {(location.pathname === "/templates/1" ||
                         location.pathname === "/templates/2") &&
                         (currentVersion === "light" ? (
-                            <MdOutlineDarkMode
-                                onClick={() => handleVersion("dark")}
-                            />
+                            <IconContainer aria-label="dark mode">
+                                <MdOutlineDarkMode
+                                    onClick={() => handleVersion("dark")}
+                                />
+                                <Tooltip>Dark</Tooltip>
+                            </IconContainer>
                         ) : (
-                            <MdOutlineLightMode
-                                onClick={() => handleVersion("light")}
-                            />
+                            <IconContainer aria-label="light mode">
+                                <MdOutlineLightMode
+                                    onClick={() => handleVersion("light")}
+                                />
+                                <Tooltip>Light</Tooltip>
+                            </IconContainer>
                         ))}
                 </Icons>
             </ToolbarContainer>

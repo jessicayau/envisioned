@@ -4,7 +4,7 @@ import {
     getPalette,
     selectCurrentPalette,
 } from "../../redux/palette/paletteSlice";
-import { Span, ColorPaletteContainer } from "./ColorPalette.styles";
+import { PaletteColor, ColorPaletteContainer } from "./ColorPalette.styles";
 
 const ColorPalette = ({ palette, paletteID, ...otherProps }) => {
     const currentPalette = useSelector(selectCurrentPalette);
@@ -25,12 +25,12 @@ const ColorPalette = ({ palette, paletteID, ...otherProps }) => {
             onClick={handleGetPalette}
         >
             {palette.map((color, index) => (
-                <Span
+                <PaletteColor
                     {...otherProps}
                     key={`${paletteID}-${index}`}
                     onClick={toolbar && (() => handleCopyColor(color))}
                     style={{ backgroundColor: `#${color}` }}
-                ></Span>
+                ></PaletteColor>
             ))}
         </ColorPaletteContainer>
     );

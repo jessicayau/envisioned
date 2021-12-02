@@ -3,7 +3,10 @@ import { ToggleButtonContainer } from "./ToggleButton.styles";
 
 const ToggleButton = ({ toggleSidebar, children }) => {
     return (
-        <ToggleButtonContainer onClick={toggleSidebar}>
+        <ToggleButtonContainer
+            aria-label="toggle sidebar"
+            onClick={toggleSidebar}
+        >
             {children}
         </ToggleButtonContainer>
     );
