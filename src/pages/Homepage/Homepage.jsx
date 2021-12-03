@@ -21,8 +21,6 @@ const Homepage = () => {
         dispatch(getRandomPalette());
     };
 
-    console.log("homepage");
-
     return (
         <div className="home">
             <Hero

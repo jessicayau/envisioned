@@ -13,7 +13,6 @@ const Sidebar = ({ sidebarIsOpen }) => {
     const palettesData = useSelector(selectAllPalettesData);
     const customPalettesData = useSelector(selectCustomPalettes);
     const errorMessage = useSelector(selectErrorMessage);
-    console.log("sidebar");
 
     const handleSubmenu = (item) => {
         if (selected === item) {
