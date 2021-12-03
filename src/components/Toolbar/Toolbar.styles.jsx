@@ -5,7 +5,7 @@ export const ToolbarContainer = styled.footer`
     height: 4rem;
     width: 100%;
     border-top: 1px solid rgba(200, 200, 241, 0.5);
-    background-color: rgba(0, 0, 0, 1);
+    background-color: black;
     color: white;
     display: flex;
     flex-direction: row;
@@ -14,6 +14,16 @@ export const ToolbarContainer = styled.footer`
     gap: 1rem;
     padding: 0 5vw;
     z-index: 10;
+`;
+
+export const Icons = styled.div`
+    display: flex;
+    gap: 1rem;
+`;
+
+export const IconContainer = styled.button`
+    position: relative;
+    background-color: transparent;
 
     svg {
         height: 1.8rem;
@@ -26,15 +36,6 @@ export const ToolbarContainer = styled.footer`
             width: 1.5rem;
         }
     }
-`;
-
-export const Icons = styled.div`
-    display: flex;
-    gap: 1rem;
-`;
-
-export const IconContainer = styled.button`
-    position: relative;
 
     &:hover {
         .tooltip {

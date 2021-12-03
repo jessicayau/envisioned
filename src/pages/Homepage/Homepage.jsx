@@ -78,8 +78,8 @@ const Homepage = () => {
                         types without making small tweaks here and there, so
                         please keep in mind that some text/background
                         combinations may not be ideal (ie. pastel text on light
-                        backgrounds). Aesthetics and accessibility are both
-                        important concepts of design. I hope you find some
+                        backgrounds). Remember, aesthetics and accessibility are
+                        both important concepts of design. I hope you find some
                         inspiration here!
                     </p>
                     <Signature>

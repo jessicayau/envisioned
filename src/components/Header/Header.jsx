@@ -48,6 +48,7 @@ const Header = () => {
             </Navbar>
             <NavToggleBtn
                 role="button"
+                aria-label="toggle navigation"
                 onClick={() => setMenuIsOpen((prev) => !prev)}
             >
                 <Line menuIsOpen={menuIsOpen}></Line>

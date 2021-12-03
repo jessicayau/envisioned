@@ -23,6 +23,7 @@ const Slider = ({ slideLinks, children }) => {
                         htmlFor={slideID}
                         index={index}
                         isActive={isActive}
+                        aria-label={`slide ${index}`}
                         onClick={() => handleActiveSlide(index)}
                     >
                         <input type="radio" id={slideID} name="slide-btn" />

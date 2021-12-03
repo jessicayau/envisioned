@@ -151,7 +151,7 @@ const CreatePalette = () => {
                                         handleRemovePalette(palette.id)
                                     }
                                     type="button"
-                                    name="remove palette"
+                                    aria-label="remove palette"
                                 >
                                     <TiDeleteOutline />
                                 </RemoveButton>

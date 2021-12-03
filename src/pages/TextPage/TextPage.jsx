@@ -16,10 +16,12 @@ const TextPage = () => {
             <p>
                 <strong>AA:</strong> Minimum contrast requirement - a contrast
                 ratio of at least 4.5:1 for normal text and 3:1 for large text.
-                <br />
+            </p>
+            <p>
                 <strong>AAA:</strong> a contrast ratio of at least 7:1 for
                 normal text and 4.5:1 for large text.
-                <br />
+            </p>
+            <p>
                 *normal text: 18pt/24px, large text: 14pt/18.6px bold, 18pt/24px
                 regular
             </p>

@@ -15,5 +15,6 @@ export const TextPageContainer = styled.div`
 
     p {
         line-height: 1.5rem;
+        margin: 0.5rem 0;
     }
 `;

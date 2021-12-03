@@ -54,7 +54,10 @@ export const paletteSlice = createSlice({
                 state.customPalettes.palettes.filter(
                     (palette) => palette.id !== action.payload
                 );
-            state.currentPalette = initialPalette;
+            state.currentPalette = getPaletteInfo(
+                initialPalette.id,
+                initialPalette.palette
+            );
         },
         clearAllCustomPalettes: (state) => {
             state.customPalettes.palettes = [];
