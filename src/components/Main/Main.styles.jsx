@@ -9,6 +9,10 @@ export const MainContainer = styled.div`
     @media screen and (max-width: 1023px) {
         margin-left: 0;
     }
+
+    @media screen and (min-width: 1440px) {
+        margin-left: 230px;
+    }
 `;
 
 export const ContentContainer = styled.main`

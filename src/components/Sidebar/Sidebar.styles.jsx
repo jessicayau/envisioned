@@ -19,6 +19,9 @@ export const SidebarContainer = styled.div`
     @media screen and (max-height: 700px) {
         padding: 1rem;
     }
+    @media screen and (min-width: 1440px) {
+        left: 0;
+    }
 `;
 
 export const Categories = styled.div`
