@@ -9,8 +9,14 @@ export const HeaderContainer = styled.header`
     align-items: center;
     padding: 0 5vw;
     padding-right: calc(5vw + 15px);
-    border-bottom: 1px solid white;
     background-color: white;
+    z-index: 10;
+
+    @media screen and (max-height: 768px) {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+    }
 `;
 
 export const Logo = styled.a`
@@ -26,6 +32,8 @@ export const Navbar = styled.nav`
         position: absolute;
         width: 100%;
         height: 60vh;
+        min-height: 400px;
+        max-height: 450px;
         top: 0;
         left: 0;
         right: 0;
@@ -35,10 +43,8 @@ export const Navbar = styled.nav`
         flex-direction: column;
         align-items: center;
         background-color: white;
-        border-bottom: 1px solid grey;
         font-size: 1.2rem;
         transition: transform 500ms ease;
-        z-index: 5;
 
         &::before {
             content: "";
@@ -114,7 +120,7 @@ export const Line = styled.p`
         width: 24px;
         height: 2px;
         background-color: ${(props) =>
-            props.menuIsOpen ? "#a0cfb0" : "black"};
+            props.menuIsOpen ? "#3F7C91" : "black"};
         border-radius: 5px;
         transition: all 250ms ease-in-out;
         position: absolute;

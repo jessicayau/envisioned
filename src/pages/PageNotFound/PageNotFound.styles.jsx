@@ -34,7 +34,7 @@ export const Title = styled.h1`
         content: "OOPS...";
         font-size: 2.5rem;
 
-        @media screen and (max-width: 767px) {
+        @media screen and (max-width: 768px) {
             font-size: 2.5rem;
         }
 

@@ -1,12 +1,9 @@
 import React from "react";
 import { ToggleButtonContainer } from "./ToggleButton.styles";
 
-const ToggleButton = ({ toggleSidebar, children }) => {
+const ToggleButton = ({ handleToggle, children }) => {
     return (
-        <ToggleButtonContainer
-            aria-label="toggle sidebar"
-            onClick={toggleSidebar}
-        >
+        <ToggleButtonContainer onClick={handleToggle}>
             {children}
         </ToggleButtonContainer>
     );

@@ -17,8 +17,8 @@ const Main = ({ sidebarIsOpen }) => {
     return (
         <MainContainer sidebarIsOpen={sidebarIsOpen}>
             <Header />
-            <ScrollToTop />
             <ContentContainer>
+                <ScrollToTop />
                 <Switch>
                     <Route exact path="/" component={Homepage} />
                     <Route exact path="/create" component={CreatePalette} />

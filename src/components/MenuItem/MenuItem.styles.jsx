@@ -16,7 +16,7 @@ export const CategoryTitle = styled.h3`
         background-color: rgba(200, 200, 241, 0.2);
     }
 
-    @media screen and (max-width: 767px) {
+    @media screen and (max-height: 700px) {
         font-size: 1rem;
     }
 `;
@@ -40,7 +40,7 @@ export const Submenu = styled.div`
         overflow: auto;
         transition: max-height 250ms ease-in-out;
 
-        @media screen and (max-width: 767px) {
+        @media screen and (max-height: 700px) {
             max-height: 210px;
         }
     }

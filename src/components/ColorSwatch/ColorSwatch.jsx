@@ -1,6 +1,6 @@
 import React, { useCallback, useState, useRef } from "react";
 import { HexColorInput, HexColorPicker } from "react-colorful";
-import useClickOutside from "../../hooks/useClickOutside";
+import useOnClickOutside from "../../hooks/useOnClickOutside";
 import {
     ColorPicker,
     ColorSwatchContainer,
@@ -12,7 +12,7 @@ const ColorSwatch = ({ color, handleColorChange }) => {
     const pickerModal = useRef();
 
     const close = useCallback(() => setIsOpen(false), []);
-    useClickOutside(pickerModal, close);
+    useOnClickOutside(pickerModal, close);
 
     return (
         <ColorSwatchContainer className="swatch">

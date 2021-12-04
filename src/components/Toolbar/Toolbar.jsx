@@ -13,6 +13,7 @@ import {
     IconContainer,
     Icons,
     ToolbarContainer,
+    Wrapper,
 } from "./Toolbar.styles";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router";
@@ -48,41 +49,39 @@ const Toolbar = () => {
     };
 
     return (
-        <>
+        <ToolbarContainer copied={copied}>
             {copied && <CopiedMessage>Copied to Clipboard</CopiedMessage>}
-            <ToolbarContainer copied={copied}>
-                <div>
-                    <ColorPalette
-                        toolbar
-                        palette={palette}
-                        handleCopyColor={handleCopyColor}
-                    />
-                </div>
-                <Icons>
-                    <IconContainer aria-label="copy palette">
-                        <BiCopy onClick={handleCopyPalette} />
-                        <Tooltip>Copy</Tooltip>
-                    </IconContainer>
-                    {(location.pathname === "/templates/1" ||
-                        location.pathname === "/templates/2") &&
-                        (currentVersion === "light" ? (
-                            <IconContainer aria-label="dark mode">
-                                <MdOutlineDarkMode
-                                    onClick={() => handleVersion("dark")}
-                                />
-                                <Tooltip>Dark</Tooltip>
-                            </IconContainer>
-                        ) : (
-                            <IconContainer aria-label="light mode">
-                                <MdOutlineLightMode
-                                    onClick={() => handleVersion("light")}
-                                />
-                                <Tooltip>Light</Tooltip>
-                            </IconContainer>
-                        ))}
-                </Icons>
-            </ToolbarContainer>
-        </>
+            <Wrapper>
+                <ColorPalette
+                    toolbar
+                    palette={palette}
+                    handleCopyColor={handleCopyColor}
+                />
+            </Wrapper>
+            <Icons>
+                <IconContainer aria-label="copy palette">
+                    <BiCopy onClick={handleCopyPalette} />
+                    <Tooltip>Copy</Tooltip>
+                </IconContainer>
+                {(location.pathname === "/templates/1" ||
+                    location.pathname === "/templates/2") &&
+                    (currentVersion === "light" ? (
+                        <IconContainer aria-label="dark mode">
+                            <MdOutlineDarkMode
+                                onClick={() => handleVersion("dark")}
+                            />
+                            <Tooltip>Dark</Tooltip>
+                        </IconContainer>
+                    ) : (
+                        <IconContainer aria-label="light mode">
+                            <MdOutlineLightMode
+                                onClick={() => handleVersion("light")}
+                            />
+                            <Tooltip>Light</Tooltip>
+                        </IconContainer>
+                    ))}
+            </Icons>
+        </ToolbarContainer>
     );
 };
 

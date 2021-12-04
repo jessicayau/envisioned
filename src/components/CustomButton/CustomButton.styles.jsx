@@ -16,8 +16,10 @@ export const CustomButtonContainer = styled.button`
         color: #${(props) => props.btnFg && props.btnFg};
     }
 
-    &:hover {
-        transition: all 250ms ease-in-out;
-        transform: scale(1.1);
+    @media screen and (min-width: 769px) {
+        &:hover {
+            transition: all 250ms ease-in-out;
+            transform: scale(1.1);
+        }
     }
 `;

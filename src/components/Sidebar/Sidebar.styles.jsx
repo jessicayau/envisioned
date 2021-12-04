@@ -15,6 +15,10 @@ export const SidebarContainer = styled.div`
         margin-top: 2rem;
         line-height: 1.3rem;
     }
+
+    @media screen and (max-height: 700px) {
+        padding: 1rem;
+    }
 `;
 
 export const Categories = styled.div`

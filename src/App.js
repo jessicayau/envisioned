@@ -60,12 +60,11 @@ const App = () => {
                         <Main sidebarIsOpen={sidebarIsOpen} />
                         <ToggleButton
                             sidebarIsOpen={sidebarIsOpen}
-                            toggleSidebar={handleToggleSidebar}
+                            handleToggle={handleToggleSidebar}
+                            aria-label="toggle sidebar"
                         >
                             {sidebarIsOpen ? (
-                                <BsFillCaretLeftFill
-                                    style={{ color: "black" }}
-                                />
+                                <BsFillCaretLeftFill />
                             ) : (
                                 <BsFillCaretRightFill />
                             )}

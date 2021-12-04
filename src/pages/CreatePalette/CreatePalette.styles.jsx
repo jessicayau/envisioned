@@ -24,7 +24,7 @@ export const TextContent = styled.div`
         line-height: 1.5rem;
     }
 
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 768px) {
         flex-direction: column;
         gap: 1rem;
 
@@ -42,7 +42,7 @@ export const PaletteSwatches = styled.div`
     border: 1px solid grey;
     margin-bottom: 1rem;
 
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 768px) {
         width: 80%;
         height: 100%;
         flex-direction: column;

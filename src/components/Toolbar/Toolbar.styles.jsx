@@ -1,7 +1,10 @@
 import styled from "styled-components";
 
 export const ToolbarContainer = styled.footer`
-    position: relative;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
     height: 4rem;
     width: 100%;
     border-top: 1px solid rgba(200, 200, 241, 0.5);
@@ -9,11 +12,14 @@ export const ToolbarContainer = styled.footer`
     color: white;
     display: flex;
     flex-direction: row;
-    justify-content: right;
     align-items: center;
     gap: 1rem;
     padding: 0 5vw;
-    z-index: 10;
+    z-index: 100;
+`;
+
+export const Wrapper = styled.div`
+    margin-left: auto;
 `;
 
 export const Icons = styled.div`
@@ -37,9 +43,11 @@ export const IconContainer = styled.button`
         }
     }
 
-    &:hover {
-        .tooltip {
-            display: block;
+    @media screen and (min-width: 769px) {
+        &:hover {
+            .tooltip {
+                display: block;
+            }
         }
     }
 `;
@@ -56,9 +64,8 @@ export const CopiedMessage = styled.div`
     font-weight: bold;
     color: black;
     background-color: white;
-    border: 1px solid rgba(200, 200, 241, 0.5);
+    border: 1px solid rgba(200, 200, 241, 1);
     animation: shiftUp 250ms linear forwards;
-    z-index: 5;
 
     @keyframes shiftUp {
         from {
@@ -66,7 +73,7 @@ export const CopiedMessage = styled.div`
         }
         to {
             opacity: 1;
-            transform: translate(-50%, -3.5rem);
+            transform: translate(-50%, -5rem);
         }
     }
 `;

@@ -11,7 +11,7 @@ export const HeroContainer = styled.section`
         height: auto;
     }
 
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 768px) {
         grid-template-columns: 1fr;
         padding: 2rem 5vw 5rem;
 
@@ -27,7 +27,7 @@ export const Title = styled.h1`
     font-size: 5vw;
     color: #${(props) => props.fgColor};
 
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 768px) {
         font-size: clamp(2.5rem, 8vw, 4rem);
     }
 `;

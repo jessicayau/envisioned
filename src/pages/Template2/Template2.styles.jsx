@@ -5,10 +5,15 @@ export const TemplateContainer = styled.div`
     margin: 0 5vw;
     border: 1px solid lightgrey;
     position: relative;
+
+    @media screen and (max-width: 425px) {
+        margin: 0;
+    }
 `;
 
 export const HeroSection = styled.div`
     position: relative;
+    min-height: 400px;
     height: 85vh;
     padding: 8rem 5vw 5rem;
     background-color: ${(props) => props.bgColor};
@@ -31,7 +36,24 @@ export const HeroSection = styled.div`
         margin-top: 2rem;
     }
 
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 768px) {
+        height: 60vh;
+        padding: 6rem 5vw 5rem;
+        background-position: 20%;
+        background-position: 25%;
+
+        p {
+            width: 95%;
+            font-size: 1rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+        }
+    }
+
+    @media screen and (max-width: 425px) {
+        height: 70vh;
         padding: 6rem 5vw 5rem;
         background-position: 20%;
         background-position: 25%;
@@ -86,7 +108,7 @@ export const Stats = styled.div`
         }
     }
 
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 768px) {
         padding: 0 1rem;
     }
 
@@ -121,7 +143,7 @@ export const ImageSection = styled.div`
         }
     }
 
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 768px) {
         padding: 10rem 5vw 5rem;
     }
 
@@ -146,7 +168,7 @@ export const Images = styled.div`
         text-align: center;
     }
 
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 768px) {
         grid-template-columns: 1fr;
     }
 `;

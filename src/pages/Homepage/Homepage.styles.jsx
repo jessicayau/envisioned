@@ -16,5 +16,5 @@ export const Signature = styled.p`
     display: flex;
     justify-content: flex-end;
     column-gap: 0.5rem;
-    font-size: 1.1.rem;
+    font-size: 1.2rem;
 `;

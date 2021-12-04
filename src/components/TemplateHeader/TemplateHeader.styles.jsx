@@ -33,7 +33,7 @@ export const TemplateLinks = styled.div`
         margin: 0 0 0 1rem;
         padding: 0 1.2rem;
 
-        @media screen and (max-width: 767px) {
+        @media screen and (max-width: 768px) {
             display: none;
         }
     }
@@ -41,7 +41,7 @@ export const TemplateLinks = styled.div`
     .menuIcon {
         display: none;
 
-        @media screen and (max-width: 767px) {
+        @media screen and (max-width: 768px) {
             display: block;
             margin-left: 1.5rem;
         }
@@ -66,7 +66,7 @@ export const TemplateLink = styled.span`
         }
     }
 
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 768px) {
         display: none;
     }
 `;

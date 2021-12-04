@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const MainContainer = styled.div`
     position: relative;
-    height: 100vh;
     margin-left: ${(props) => (props.sidebarIsOpen ? "230px" : 0)};
+    margin-bottom: 4rem;
     transition: all 250ms ease-in-out;
 
     @media screen and (max-width: 1023px) {
